@@ -1,0 +1,11 @@
+<? exit();?>
+			<p>随着科技的发展，各国设计师设计出了越来越多的机器人，通过网络、电视、杂志等途径我们可以了解一些机器人，更或如果有条件的话还可以参加一些科技博览会近距离接触参观那些神奇的机器人，那会让你感叹科技如此神奇，人类智慧如此伟大。下面就让倩儿跟大家一起分享由美国设计师Steve Talkowsk设计的超级炫酷的卡通机器人吧，它们有的可以是你的生活小助手，帮你送水杯和手机，有的像一位植物学家，拿起放大镜观察植被，有的会跳街舞，还有的要拿起帆板去冲浪等等。</p>
+<p><img class=\"alignnone size-full wp-image-3504\" title=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/szkn5pzzkar.jpg\" alt=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" width=\"600\" height=\"600\" /></p>
+<p><img class=\"alignnone size-medium wp-image-3505\" title=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/2r31chmt0c3.jpg\" alt=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" width=\"600\" height=\"600\" /></p>
+<p><img class=\"alignnone size-medium wp-image-3506\" title=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/mi1zfoxmmyq.jpg\" alt=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" width=\"600\" height=\"600\" /></p>
+<p><img class=\"alignnone size-medium wp-image-3507\" title=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/1sqo4qehiuf.jpg\" alt=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" width=\"600\" height=\"600\" /></p>
+<p><img class=\"alignnone size-medium wp-image-3508\" title=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/5r2r4etpdcm.jpg\" alt=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" width=\"600\" height=\"600\" /></p>
+<p><img class=\"alignnone size-medium wp-image-3509\" title=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/dcqdb22hrb5.jpg\" alt=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" width=\"600\" height=\"599\" /></p>
+<p><img class=\"alignnone size-medium wp-image-3510\" title=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/gdrvzwmfu3e.jpg\" alt=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" width=\"600\" height=\"600\" /></p>
+<p><img class=\"alignnone size-medium wp-image-3511\" title=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/mwnxmajcztk.jpg\" alt=\"科技如此神奇 感受超级炫酷的卡通机器人--阿里百秀\" width=\"600\" height=\"600\" /></p>
+		

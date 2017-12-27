@@ -1,0 +1,266 @@
+/* 
+yecha 设计编写 原创设计 请勿仿制 
+QQ:372009617
+*/
+@CHARSET "UTF-8";
+/*重定义头部*/
+#header { background: #3a3a3a; box-shadow: 0 0 4px #000; -webkit-box-shadow: 0 0 4px #000; -moz-box-shadow: 0 0 4px #000; border-bottom: none; position: relative; z-index: 999; }
+.nav a { background-color: transparent; box-shadow: none; border: none; }
+.nav a.selected { background-color: transparent; box-shadow: none; }
+.nav ul { margin-top: 0px; }
+.nav ul li { height: 36px; padding-top: 6px; }
+.nav ul li:hover { background-color: #000; }
+.nav a.last { border-right: none; }
+.nav a:hover { background-color: transparent; box-shadow: none; }
+li.dingzhi ul { top: 42px; }
+.nav ul li.dingzhi ul li { padding-top: 0; height: 29px; line-height: 29px; }
+li.xiala_1 ul { top: 42px; }
+.nav ul li.xiala_1 ul li { padding-top: 0; height: 29px; line-height: 29px; }
+li.xiala_2 ul { top: 42px; }
+.nav ul li.xiala_2 ul li { padding-top: 0; height: 29px; line-height: 29px; }
+li.xiala_3 ul { top: 42px; }
+.nav ul li.xiala_3 ul li { padding-top: 0; height: 29px; line-height: 29px; }
+li.xiala_4 ul { top: 42px; }
+.nav ul li.xiala_4 ul li { padding-top: 0; height: 29px; line-height: 29px; }
+li.xiala_5 ul { top: 42px; }
+.nav ul li.xiala_5 ul li { padding-top: 0; height: 29px; line-height: 29px; }
+/*会员中心*/
+.hymain { width: 1000px; margin: 0 auto; overflow: hidden; margin-top: 80px; min-height: 450px; position: relative; border-radius: 6px 6px 4px 4px; background: url(y_home.png) repeat-y; z-index:5;}
+.hytopmenu { width: 1002px; height: 39px; line-height: 39px; background: url(x_home.png) repeat-x; -moz-border-radius: 6px 6px 0 0; -webkit-border-radius: 6px 6px 0 0; border-radius: 6px 6px 0 0; overflow: hidden; }
+.hytopmenu span { float: left; margin-right: 10px; color: #A49999; display: inline-block; text-align: right; padding: 0 0 0 20px; text-align: right; }
+.hytopmenu ul { float: left; }
+.hytopmenu li { float: left; padding: 0 15px; }
+.hysidebar { width: 270px; padding: 18px; float: left; }
+.userbox { position: relative; }
+.userbox a.editavator { display: inline-block; width: 84px; height: 28px; background: #000; color: #fff; position: absolute; top: 57px; left: 1px; text-align: center; line-height: 28px; -moz-opacity: 0.5; filter: alpha(opacity=50); opacity: 0.5; display: none; }
+.avator { float: left; }
+.userbox .avator a img { width: 80px; height: 80px; padding: 2px; border: 1px solid #93CF20; float: left; }
+.userxx { width: 170px; margin-left: 10px; float: left; overflow: hidden; overflow: hidden; }
+.userxx span { line-height: 25px; }
+.userxx ul { }
+.userxx li { float: left; width: 55px; }
+.userxx li a strong { color: #669900; font-size: 13px; font-weight: normal; }
+p.user_info { line-height: 20px; margin: 8px 0; color: #333; display: block; }
+.userzx { margin-top: 8px; }
+.userzx li a { height: 40px; background: url(menubg.jpg) 0 -40px no-repeat; line-height: 40px; font-size: 14px; display: block; }
+.userzx li a:hover, .userzx li a.selected { background-position: 0 0; color: #fff; }
+.userzx li span { display: inline-block; width: 30px; height: 40px; float: left; margin-left: 30px; }
+.ico_zx { background: url(hyico.png) -24px 0 no-repeat; }
+.ico_xx { background: url(hyico.png) -28px -40px no-repeat; }
+.ico_tg { background: url(hyico.png) -26px -80px no-repeat; }
+.ico_kj { background: url(hyico.png) -26px -120px no-repeat; }
+.ico_jf { background: url(hyico.png) -25px -160px no-repeat; }
+.ico_sc { background: url(hyico.png) -26px -200px no-repeat; }
+.ico_out { background: url(hyico.png) -26px -240px no-repeat; }
+.ico_fav { background: url(hyico.png) -25px -280px no-repeat; }
+.ico_fri { background: url(hyico.png) -26px -320px no-repeat; }
+.ico_gz { background: url(hyico.png) -26px -360px no-repeat; }
+.hyright { float: left; width: 650px; min-height: 400px; padding: 18px; }
+.hy_nav { width: 100%; height: 35px; line-height: 35px; border-bottom: 1px solid #D9D9D9; }
+.hy_nav li { float: left; }
+.hy_nav li a { display: block; padding: 0 20px; }
+.hy_nav li a.selected { background: #259ACD; color: #fff; border-radius: 8px 8px 0 0; text-shadow: #02AAD1 0 1px 0; box-shadow: 1px -3px 5px #cccccc; }
+.setting { padding-top: 40px; }
+.setting li { margin-bottom: 20px; line-height: 22px; }
+.setting li label { color: #666; display: inline-block; font-size: 14px; text-align: right; width: 100px; padding-right: 12px; }
+.setting.yh.bd { margin-top: 20px; }
+.hy_nav.hd { width: auto; height: 35px; line-height: 35px; border-bottom: 1px solid #D9D9D9; margin-top: 10px; position: relative; }
+.hy_nav.hd a { padding: 4px 10px; height: 20px; line-height: 20px; }
+.hy_nav.hd li.on a, .hy_nav.hd a.on { color: #fff; position: relative; background: #259ACD; }
+.setting.yh.bd li { color: #259ACD; }
+.hytable { padding: 10px 0; }
+.common-table { width: 100%; }
+.common-table thead th { background: #fafafa; padding: 8px 20px; }
+.common-table td { border-bottom: 1px dashed #ddd; padding: 8px 20px; }
+.common-table td.noborder { border-bottom: none; }
+.common-table td img.msgico { margin-right: 5px; float: left; }
+.hytable td b { color: #259ACD; }
+a.chosefri { margin-left: 5px; background: url(user.png) left center no-repeat; padding-left: 18px; }
+td.tgtitle { width: 180px; }
+.addnews { margin-bottom: 10px; border-bottom: 1px dotted #ccc; padding-bottom: 10px; }
+span.lanmu { display: block; padding: 4px 0; color: #ddd; }
+span.lanmu a { color: #ccc; }
+a.tgtitle { font-size: 13px; color: #0090B5; font-weight: bold; font-family: 微软雅黑; }
+.addnews input, .addnews select { float: left; margin-left: 2px; }
+.checked { width: 16px; height: 16px; background: url(check.png) no-repeat; margin: 0 auto; }
+.nocheck { width: 16px; height: 16px; background: url(waitcheck.png) no-repeat; margin: 0 auto; }
+.tgfl li a { background-color: #D7F3D8; color: #238221; text-align: center; }
+.tgfl li a.selected { border-radius: 0; background: #238221 url(accept.png) 8px center no-repeat; display: block; padding-left: 26px; text-shadow: none; box-shadow: none; color: #fff; border-right: 2px solid #fff; }
+.tgmain .setting li label { width: 130px; vertical-align: top;}
+.tgmain .setting li input[type='text'] { padding: 0 5px; }
+.hy_nav.tglist { margin-bottom: 15px; line-height: 35px; font-size: 14px; }
+.hy_nav.tglist li { padding-right: 10px; }
+li.diybg img { width: 100px; height: 80px; padding: 1px; border: 1px solid #ccc; }
+.hylylist { }
+.hylylist ul { margin: 20px 0; }
+.hylylist ul li { background: #fbfbfb; padding: 20px; border: 1px solid #eee; margin-bottom: 10px; }
+.hylylist ul li:hover { border: 1px solid #8ACC41 }
+.hylylist ul li:hover .rehylymsg { border: 1px solid #8ACC41; }
+.hylyname { display: block; padding: 5px 10px; color: #8ACC41; vertical-align: middle; }
+.mailto { background: url(mail.png) center no-repeat; width: 16px; height: 16px; }
+.hylymsg { padding: 20px; border: 1px solid #eee; margin: 15px 10px; }
+.lyuser { background: url(user.png) left center no-repeat; padding-left: 18px; }
+.plcz { margin: 0 30px; }
+.rehylymsg { width: auto; padding: 10px; margin: 10px 0; border-radius: 5px; color: #8ACC41; border: 1px solid #eee; }
+/*会员空间*/
+.hyindex { width: 1000px; margin: 0 auto; margin-top: 200px; min-height: 350px; position: relative; border-radius: 6px 6px 4px 4px; }
+.hymenu { margin-left: 230px; }
+.hy_avator { position: absolute; top: -68px; left: 18px; z-index: 10; }
+.avator_bg { background: #fff; border: 1px solid #CCCCCC; border-bottom: 1px solid #666666; padding: 6px; box-shadow: 0 0 15px #cccccc; -webkit-box-shadow: 0 0 15px #cccccc; -moz-box-shadow: 0 0 15px #cccccc; }
+.avator_bg img { border: 1px solid #ccc; padding: 1px; width: 180px; height: 180px; }
+.avator_bg a:hover img { border: 1px solid #73814C; }
+.hyhead { width: 1000px; position: relative; height: 235px; background-color: #F2F4F0; background: rgba(255,255,255,0.6); z-index: 1;border: 1px solid #eee; border-top:none; border-bottom:none; }
+.w230 { width: 250px; height: 235px; }
+.my_left { width: 180px; }
+.my_left ul { margin: 10px auto; margin-left: 30px; }
+.my_left li { float: left; width: 50px; line-height: 18px; }
+.my_left li a strong { color: #669900 }
+.renzheng { padding: 0 16px; width: 140px; display: block; font-size: 14px; }
+.hyxx { height: 215px; padding: 10px 0; width: 415px; }
+.hyxx h3 { white-space: nowrap; font-size: 30px; line-height: 42px; color: #333; font-weight: normal; }
+.hyxx h3 a:hover { color: #690; }
+.hyxx span { line-height: 1.8; color: #999; }
+.hyhudong { margin-top: 8px; }
+.hyxx span.rzxx { display: block; color: #666; padding: 10px 0; }
+.hygg { margin-right: 10px; width: 228px; height: 145px; background: url(ico_ann_bg.png) no-repeat; margin-top: 18px; padding: 20px 38px 40px 38px; line-height: 1.8; overflow: hidden; position: relative; }
+.hyggxx { position: absolute; bottom: 10px; text-align: center; line-height: 35px; width: 228px; }
+.hyfeed { width: 1000px; margin: 0 auto; min-height: 400px; background: url(y_home.png) repeat-y;border: 1px solid #eee; border-top:none;}
+.hyfeed h3,.tjbox h3,.hyfans h3,.hygbook h3{ font-size: 18px; line-height: 40px; height: 40px; background-color: #EFF6EA; border-bottom: 2px solid #D4E9C4; text-indent: 30px; font-weight:normal;}
+.hyfeedleft { width: 270px; padding: 18px; float: left; min-height: 400px; }
+.hyfeedleft h4 { height: 26px; line-height: 24px; padding: 5px 10px; border-bottom: 1px solid #E6E6E6; margin-bottom: 20px; overflow: hidden; zoom: 1; font-size: 14px; font-weight: 700; color: #666; clear:both;}
+.hyfeedleft h4 a{ float:right; color:#ccc; font-size:12px; font-weight:normal;}
+.hyfeedleft h4 a:hover{ color:#669900;}
+ul.feedgz { }
+ul.feedgz li { float: left; width: 25%; text-align: center; margin-bottom: 10px; }
+ul.feedgz li img { width: 40px; height: 40px; border: 1px solid #ccc; padding: 1px; }
+ul.feedgz li a:hover img { border: 1px solid #390; -webkit-transition: .25s linear .1s; transition: .25s linear .1s; }
+ul.feedgz li a:hover { color: #390; -webkit-transition: .25s linear .1s; transition: .25s linear .1s; }
+ul.feedgz li span { display: block; text-align: center; line-height: 30px; height:30px; white-space: nowrap; text-overflow: ellipsis;overflow:hidden;}
+.hyfeedright { float: left; width: 650px; min-height: 400px; padding: 18px; }
+.feedly li { position: relative; padding: 0 10px; width: 250px; margin-bottom: 10px; border-bottom: 1px solid #EAEAEA; padding-bottom: 10px; }
+.feedly li img { width: 30px; height: 30px; border: 1px solid #ccc; padding: 1px; float: left; }
+.feedly li .feedlyxx { float: right; width: 205px; line-height: 1.5; overflow: hidden; }
+.feedly li a:hover img { border: 1px solid #390; -webkit-transition: .25s linear .1s; transition: .25s linear .1s; }
+.feedlyuser { display: block; color: #ccc; line-height: 18px; }
+.plsub { line-height: 25px; text-align: right; margin: 10px 0 0 0; }
+.plsub span { float: left; position: relative; }
+.plsub span .face { position: absolute; background: #fff; z-index: 10; border-radius: 4px; border: 1px solid #ccc; text-align: left; padding: 10px; box-shadow: 1px 1px 4px #cccccc; display: none; }
+.feedwritely { margin-bottom: 10px; }
+.hyfeed ul.feedlist { }
+.hyfeed ul.feedlist li { font-size: 14px; color: #333; line-height: 35px; padding-bottom:10px; background:url(feed_bg.png) left bottom repeat-x; margin-bottom:10px;}
+.hyfeed ul.feedlist li a,.hyfeed ul.feedlist li .hyfeedxx a:hover{ color: #390 }
+.feednewspic img { max-width: 120px; max-height:400px; vertical-align: top; border-color: #CCC #999 #999 #CCC; border-style: solid; border-width: 1px; padding: 3px; background: 0; }
+.feednewspic a:hover img{ border:1px solid #390; background-color:#390}
+.hyfeedxx { font-size:12px; color: #999;}
+.hyfeed ul.feedlist li .hyfeedxx a{color:#999;}
+.hyfeeduserxx a{ margin-left:15px;}
+.hyfeed ul.feedlist li a:hover img{ border:1px solid #390}
+.nogz { width:100%; text-align:center; background:url(nogz.gif) center no-repeat; padding:130px 0 40px 0;}
+.editgg { background:url(editgg.png) left center no-repeat; padding-left:20px; display:block; position:absolute; bottom:50px; right:30px;}
+.feedly li .feedlyxx img{ width:50px; border:none; height:auto;}
+/*列表*/
+.tjbox { width:1000px; border:1px solid #eee; background-color:#fff;height:auto!important; height:295px; min-height:295px;}
+.tjbox ul { width:1000px;}
+.tjbox li { float:left; width:229px; overflow:hidden; padding:8px 10px 15px 10px; border-right:1px solid #F4F4F4; border-bottom:1px solid #F4F4F4; }
+a.newstitle { font-size: 14px; font-weight: bold; display:block; text-align:left; padding:8px; width:234px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.tjbox a.newspic img {width: 228px;height: 178px;}
+.zpxx { color:#808080; line-height:22px; padding:0 8px; }
+.zpxx span a { font-weight:bold; }
+.zpxx em { font-style:normal; }
+.zpfl a:hover { color:red; }
+.tjbox h3 a{ float:right; margin-right:10px; line-height:14px;text-indent:0; margin-top:5px;}
+.hycopyright{ width:1000px; padding:20px 0; text-align:center; background-color:#fff; border:1px solid #eee; margin:0 auto; margin-top:5px;}
+/*fans*/
+.hyfans,.hygbook{ background:#fff; border:1px solid #eee; border-top:none; width: 1000px;}
+.hyfans ul{}
+.hyfans li{ position:relative; padding:15px 10px; height:100px; float:left; width:229px; border:1px solid #eee; border-left:none; border-top:none;}
+.hyfans li img{ float:left; width:100px; height:100px; border:1px solid #ccc; padding:1px; margin-right:10px;}
+.hyfans li .hyzp{ position:absolute; right:20px; height:80px; top:30px;}
+.hyfans li span{ display:inline-block; line-height:1.8; width:110px; overflow:hidden;}
+.hyfans li span a.button{ line-height:14px; margin-top:10px;}
+.hyfans li a:hover img{ border:1px solid #94CE20}
+.hyfans li:hover{ background-color:#EFF6EA; border-bottom:1px solid #94CE20}
+/*会员留言*/
+.addgbook {padding:10px; border-bottom:1px solid #eee; padding-bottom:10px;}
+.addgbook textarea{ width:968px;}
+.hygbooklist ul{ margin:20px;}
+.hygbooklist ul li{ display:block;position:relative;height:auto!important; height:90px; min-height:90px; padding-bottom:10px; border-bottom:1px solid #f8f8f8; margin-bottom:20px;}
+.hygbooklist .avator{ position:absolute; left:20px; top:0;}
+.hygbooklist .avator img{ margin-right:20px; width:80px; height:80px; padding:1px; border:1px solid #ccc;-moz-opacity:0.6; filter:alpha(opacity=60);opacity: 0.6;}
+.hygbooklist a.avator:hover img,.hygbooklist ul li:hover a.avator img{-moz-opacity:1; filter:alpha(opacity=100);opacity:1;-webkit-transition:.25s linear .1s;transition:.25s linear .1s;}
+.hygbooklist ul li span{ display:block; margin-left:120px; line-height:24px;}
+.hygbooklist ul li span h4{ line-height:30px; border-bottom:1px dashed #ccc; font-weight:normal; font-size:12px; color:#666; margin-bottom:10px;}
+.hygbooklist ul li span h4 .fr a{ display:inline-block; -moz-opacity:0.3; filter:alpha(opacity=30);opacity: 0.3;}
+.hygbooklist ul li span h4 .fr a:hover{-moz-opacity:1; filter:alpha(opacity=100);opacity:1; color:#390;}
+.regbook { background:url(regbook.png) left center no-repeat; padding-left:20px;}
+.delgbook { background:url(delgbook.png) left center no-repeat; padding-left:18px;}
+.rethisgbook { padding:10px; border:1px solid #eee; background-color:#F6FFEF; color:#378213;border-radius: 4px;}
+.hygbook h3 a{float:right; margin-right:10px; line-height:14px;text-indent:0; margin-top:6px;}
+.viewxy{background: white url(bs.png) no-repeat left top; padding-left:22px; height:25px; display:inline-block; color:#000;}
+a.viewxy:hover{ background-position:0 -24px; color:#00ACFF;}
+
+
+
+/* 用户上传 */
+#file_upload{ display:inline-block;}
+.user-upload ul { overflow: hidden; border-bottom: 1px solid #D7D7D7; _height: 1%; }
+.user-upload ul li { float: left; background: url("user-upload-list.gif") no-repeat center right; padding: 10px 20px; overflow: hidden; padding-bottom: 0px; width: 150px; }
+.user-upload .left-pad { padding-left: 0px; }
+/*.user-upload .right-back{ background:none;}*/
+
+.user-upload ul a { display: block; height: 30px; line-height: 28px; font-size: 18px; text-decoration: none; font-family: 微软雅黑; clear: both; overflow: hidden; text-align: center; width: 150px; }
+.user-upload ul a:hover, .gz_current, .user-upload ul #user-pic-current { color: #333333; text-decoration: none; border-bottom: 3px solid #00cc56; }
+.user-upload-img { padding: 30px; width: 883px; float: right; }
+.uploadbox { border: 1px solid #D7D7D7; width: 933px; margin-right: 15px; }
+.uploadbox dl { overflow: hidden; padding: 20px; }
+.uploadbox dt { width: 158px; float: left; }
+.uploadbox dt .upload-botton { height: 50px; background: url("user-upload-upm.gif") no-repeat; border: none }
+.uploadbox dt a:hover .upload-botton { background: url("user-upload-uph.gif") no-repeat; }
+.uploadbox dt a:active .upload-botton { background: url("user-upload-upc.gif") no-repeat; }
+.uploadbox dd { float: left; width: 600px; height: 25px; line-height: 25px; padding-left: 20px; font-size: 14px; color: #666 }
+/*上传  中*/
+
+#file_upload-button { background: url("user-upload-upm.gif"); background-position: center top; background-repeat: no-repeat; color: #FFF; font: bold 12px Arial, Helvetica, sans-serif; text-align: center; text-shadow: 0 -1px 0 rgba(0,0,0,0.25); width: 100%; }
+.uploadify:hover #file_upload-button { background: url("user-upload-uph.gif"); background-position: center bottom; }
+.uploadify:active #file_upload-button { background: url("user-upload-upc.gif"); background-position: center bottom; }
+#p_file_upload-button { background: url("user-upload-thume.png"); background-position: center top; background-repeat: no-repeat; color: #FFF; font: bold 12px Arial, Helvetica, sans-serif; text-align: center; text-shadow: 0 -1px 0 rgba(0,0,0,0.25); width: 100%; }
+.uploadify:hover #p_file_upload-button { background: url("user-upload-thume-h.png"); background-position: center bottom; }
+.uploadify:active #p_file_upload-button { background: url("user-upload-thume-c.png"); background-position: center bottom; }
+.uploadify-button.disabled { background-color: #D0D0D0; color: #808080; }
+#pic_file_upload-queue { width: 202px; }
+.cancel { background: url("user-colse.gif") no-repeat scroll center bottom; float: right; height: 23px; padding-right: 5px; padding-top: 3px; width: 21px; }
+.cancel a { display: block; height: 23px; width: 21px; text-indent: -999999px; }
+.flow-info .upload-text { height: 20px; line-height: 170%; overflow: hidden; padding-top: 8px; width: 200px; word-break: break-all; word-wrap: break-word; }
+.uploadify-queue { width: 560px;padding-top: 10px;display: inline;color: #35AC20;font-size: 16px;margin-left: 15px;vertical-align: middle;}
+.uploadify-queue-item { background-color: white;border: 1px solid #D7D7D7;font: 11px Verdana, Geneva, sans-serif;margin-top: 5px;max-width: 600px;padding: 10px;margin-left: 142px;}
+.uploadify-progress { height: 15px; background-color: #DFDFDF; /*		background-color: #E5E5E5;*/
+
+margin-top: 10px; width: 100%; }
+.uploadify-progress-bar { background: url("user-uploading.gif"); height: 15px; width: 0px; }
+.fileName { height: 30px; line-height: 30px; }
+.uploadify-error { background-color: #FDE5DD !important; }
+.uploadify-queue-item.completed { background-color: #E5E5E5; }
+.del-fox { display: block; height: 29px; width: 39px; position: absolute; top: -11px; right: -11px; background: url("user-upload-colse.gif") no-repeat; display: none; }
+.img-content-p { height: 33px; width: 150px; background: url("user-upload-bg.png") repeat-x; position: absolute; top: 40px; left: 35px; border-radius: 5px; }
+.img-content, .review-mod { display: block; height: 33px; line-height: 33px; text-align: center; font-size: 16px; color: #fff; font-family: 微软雅黑; }
+.upload-thumbnail, .mod-file { width: 800px; position: fixed; _position: absolute; _top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop, 10)||200)-(parseInt(this.currentStyle.marginBottom, 10)||0)));
+background-color: #fff; z-index: 100; -moz-box-shadow: 2px 2px 10px #666; -webkit-box-shadow: 2px 2px 10px #666; box-shadow: 2px 2px 10px #666; display: none; z-index: 99; }
+.mod-file { width: 950px; }
+.upload-thumbnail h2, .mod-file h2 { border-bottom: 1px solid #EBEBEB; height: 72px; line-height: 72px; font-size: 24px; font-family: 微软雅黑; background-color: #FAFAFA; padding-left: 30px; }
+.upload-thumbnail h2 a, .mod-file h2 a { float: right; height: 72px; width: 100px; background: url("colse.gif") no-repeat; }
+.upload-thumbnail h2 a:hover, .mod-file h2 a:hover { background: url("colse-hover.gif") }
+.upload-thumbnail h2 a:active, .mod-file h2 a:active { background: url("colse-click.gif") }
+.upload-thum { height: 177px; width: 178px; padding: 20px 20px 40px; }
+.upload-thum img { height: 177px; width: 178px; }
+.upload-tishi { width: 555px; padding-top: 20px; }
+.upload-up { display: block; width: 134px; height: 47px; background: url("user-upload-up2m.gif") no-repeat; }
+.upload-up:hover { background: url("user-upload-up2h.gif") no-repeat; }
+.upload-up:hover { background: url("user-upload-up2c.gif") no-repeat; }
+.fon-14 { font-size: 14px; color: #39A530; height: 47px; line-height: 47px; }
+.fon-15 { font-size: 15px; color: #39A530; height: 25px; line-height: 25px; }
+.uploadify { }
+.upload-file { height: 15px; background-color: #dfdfdf; }
+.upload-cen { width: 555px; margin-top: 30px; }
+.uploadify-thum { border: 1px solid #D8D8D8; height: 50px; width: 505px; padding: 10px 20px; margin-bottom: 20px; }
+#TB_overlayBG { background-color: #fff; position: absolute; z-index: 80; left: 0; top: 0; ; width: 100%; height: 100%; opacity: 0.5; filter: alpha(opacity=50); -moz-opacity: 0.5; display: none }
+.no-upimage { display: block; height: 175px; width: 202px; background: url("no-upimage1.png") no-repeat center; margin: 0 auto; }

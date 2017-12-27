@@ -1,0 +1,803 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-title" content="lllomh(芈渡)">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<link rel='stylesheet' id='_common-css'  href='/skin/ecms009/css/common.css?ver=11.1' type='text/css' media='all' />
+<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+<meta name="keywords" content="代码" />
+<meta name="description" content="html页面的CSS、DIV命名规则 " />
+<title>html页面的CSS、DIV命名规则--lllomh(芈渡)</title>
+<link rel="shortcut icon" href="/skin/ecms009/images/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/skin/ecms009/images/icon-144x144.png">
+<!--[if lt IE 9]><script src="/skin/ecms009/js/html5.js"></script><![endif]-->
+</head>
+<body class="single single-post single-format-standard">
+<header class="header">
+  <div class="container">
+    <h1 class="logo"><a href="http://www.gonghaibo.com/" title="lllomh(芈渡)">lllomh(芈渡)</a></h1>
+    <ul class="nav">
+      <li class=""><a href="http://www.gonghaibo.com/">首页</a></li>
+      <li class=""><a href="http://www.gonghaibo.com/gyw/">关于我</a><ul class="sub-menu"></ul></li><li class=""><a href="http://www.gonghaibo.com/view/">慢生活</a></li><li class=""><a href="http://www.gonghaibo.com/food/">心情日志</a></li><li class="active"><a href="http://www.gonghaibo.com/life/">笔记分享</a></li><li class=""><a href="http://www.gonghaibo.com/lyban/">留言板</a><ul class="sub-menu"></ul></li>    </ul>
+    <div class="slinks"> <a href="http://www.gonghaibo.com//lyban" title="留言板">留言</a> - <a href="http://www.gonghaibo.com/site_misc/music/">音乐</a> - <a href="http://www.gonghaibo.com/zan">点赞墙</a> - <a href="http://www.gonghaibo.com//gyw" title="关于我">关于我</a> - <a href="//shang.qq.com/wpa/qunwpa?idkey=ec2c5c138f48abe7e713f3a1aba893a8774585dbb2e15762d93adb9fb8f7ef94"  target="_blank"  title="javascript:void(0)">QQ群</a><br>
+      <a class="feed-weixin" rel="external nofollow" href="javascript:;">捐赠作者</a> - <a rel="external nofollow" href="https://github.com/lllomh" title="xinlang" target="_blank">github</a> - <a rel="external nofollow" href="http://t.qq.com/a29405484" title="alibaixiu" target="_blank">腾讯微博</a> - <a rel="external nofollow" href="http://897963688.qzone.qq.com" title="/e/web/?type=rss2" target="_blank">QQ空间</a> </div>
+    <form onsubmit="return checkSearchForm()" method="post" name="searchform" id="searchform" class="searchform" action="/e/search/index.php" >
+    <input type="hidden" value="title" name="show"></input>
+          <input type="hidden" value="1" name="tempid"></input>
+          <input type="hidden" value="news" name="tbname"></input>
+          <input name="mid" value="1" type="hidden">
+          <input name="dopost" value="search" type="hidden">
+      <input class="search-input" name="keyboard" type="text" placeholder="输入关键字">
+      <button class="search-btn" name="submit" type="submit">搜索</button>
+    </form>
+  </div>
+</header>
+<section class="container">
+  <div class="content-wrap">
+    <div class="content">
+      <header class="article-header">
+        <h1 class="article-title"><a href="http://www.gonghaibo.com/life/201406/56.html">html页面的CSS、DIV命名规则</a></h1>
+        <div class="article-meta">
+          <time class="new">
+            2天前          </time>
+          <span class="item">小编：admin </span> <span class="item">分类：<a href="http://www.gonghaibo.com/life/" title="查看笔记分享中的全部文章" rel="category tag">笔记分享</a></span> <span class="item">信息来源：</span> <span class="item post-views">阅读(<script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=5&id=56&addclick=1></script>)</span> <span class="item"></span> </div>
+      </header>
+      <article class="article-content">
+<div class="ad"><script src=http://www.gonghaibo.com/d/js/acmsd/thea5.js></script></div>
+<div class="article-pic" style=" display:none">
+<img src="http://www.gonghaibo.com//d/file/2017-12-20/e652942ccdf6eb8f6c91b74820fd010a.jpg" />
+</div>
+<pre class="brush:html;toolbar:false">CSS命名规则
+　　头：header
+　　内容：content/containe
+　　尾：footer
+　　导航：nav
+　　侧栏：sidebar
+　　栏目：column
+　　页面外围控制整体布局宽度：wrapper
+　　左右中：left&nbsp;right&nbsp;center
+　　登录条：loginbar
+　　标志：logo
+　　广告：banner
+　　页面主体：main
+　　热点：hot
+　　新闻：news
+　　下载：download
+　　子导航：subnav
+　　菜单：menu
+　　子菜单：submenu
+　　搜索：search
+　　友情链接：friendlink
+　　页脚：footer
+　　版权：copyright
+　　滚动：scroll
+　　内容：content
+　　标签页：tab
+　　文章列表：list
+　　提示信息：msg
+　　小技巧：tips
+　　栏目标题：title
+　　加入：joinus
+　　指南：guild
+　　服务：service
+　　注册：regsiter
+　　状态：status
+　　投票：vote
+　　合作伙伴：partner
+XHTML文件中id的命名
+(1)页面结构
+　　容器:&nbsp;container
+　　页头：header
+　　内容：content/container
+　　页面主体：main
+　　页尾：footer
+　　导航：nav
+　　侧栏：sidebar
+　　栏目：column
+　　页面外围控制整体布局宽度：wrapper
+　　左右中：left&nbsp;right&nbsp;center
+(2)导航
+　　导航：nav
+　　主导航：mainbav
+　　子导航：subnav
+　　顶导航：topnav
+　　边导航：sidebar
+　　左导航：leftsidebar
+　　右导航：rightsidebar
+　　菜单：menu
+　　子菜单：submenu
+　　标题:&nbsp;title
+　　摘要:&nbsp;summary
+(3)功能
+　　标志：logo
+　　广告：banner
+　　登陆：login
+　　登录条：loginbar
+　　注册：regsiter
+　　搜索：search
+　　功能区：shop
+　　标题：title
+　　加入：joinus
+　　状态：status
+　　按钮：btn
+　　滚动：scroll
+　　标签页：tab
+　　文章列表：list
+　　提示信息：msg
+　　当前的:&nbsp;current
+　　小技巧：tips
+　　图标:&nbsp;icon
+　　注释：note
+　　指南：guild
+　　服务：service
+　　热点：hot
+　　新闻：news
+　　下载：download
+　　投票：vote
+　　合作伙伴：partner
+　　友情链接：link
+　　版权：copyright
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+CSS+DIV的命名规则：
+　　登录条:loginBar
+　　标志:logo
+　　侧栏:sideBar
+　　广告:banner
+　　导航:nav
+　　子导航:subNav
+　　菜单:menu
+　　子菜单:subMenu
+　　搜索:search
+　　滚动:scroll
+　　页面主体:main
+　　内容:content
+　　标签页:tab
+　　文章列表:list
+　　提示信息:msg
+　　小技巧:tips
+　　栏目标题:title
+　　友情链接:friendLink
+　　页脚:footer
+　　加入:joinus
+　　指南:guild
+　　服务:service
+　　热点:hot
+　　新闻:news
+　　下载:download
+　　注册:regsiter
+　　状态:status
+　　按钮:btn
+　　投票:vote
+　　合作伙伴:partner
+　　版权:copyRight
+　　1.CSSID的命名
+　　外套:wrap
+　　主导航:mainNav
+　　子导航:subnav
+　　页脚:footer
+　　整个页面:content
+　　页眉:header
+　　页脚:footer
+　　商标:label
+　　标题:title
+　　主导航:mainNav(globalNav)
+　　顶导航:topnav
+　　边导航:sidebar
+　　左导航:leftsideBar
+　　右导航:rightsideBar
+　　旗志:logo
+　　标语:banner
+　　菜单内容1:menu1Content
+　　菜单容量:menuContainer
+　　子菜单:submenu
+　　边导航图标:sidebarIcon
+　　注释:note
+　　面包屑:breadCrumb(即页面所处位置导航提示)
+　　容器:container
+　　内容:content
+　　搜索:search
+　　登陆:login
+　　功能区:shop(如购物车，收银台)
+　　当前的current
+　　2.样式文件命名
+　　主要的:master.css
+　　布局版面:layout.css
+　　专栏:columns.css
+　　文字:font.css
+　　打印样式:print.css
+　　主题:themes.css
+说明：均为class，需要扩展，则在当前命名内以“_“(下划线)后缀自定名称。
+我习惯称列表页为list，新闻列表则为newslist，图片列表为piclist，
+内容页为view，
+/**/
+整体大框架：#wrapper
+大框架内：#inwrapper
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+顶部及banner：.top
+顶部及banner内：.intop
+Logo：.logo
+Banner：.banner
+导航：.menu
+导航内：.inmenu
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Menuul
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Menuul&nbsp;li
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Menuul&nbsp;li&nbsp;a
+下拉菜单：.inmenu_xiala
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Inmenu_xialaul
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Inmenu_xialaul&nbsp;li
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.Inmenu_xialaul&nbsp;li&nbsp;a
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+主体内容：.mainWrapper
+主体内容内：.inmainwrapper
+左侧拦：.sideleft
+左侧内：.insideleft
+右侧栏：.sideright
+右侧内：.insideright
+中间：.sidecenter
+中间内：.insidecenter
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+底部：.foot
+底部内：.infoot
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*其他命名*/
+搜索：.search
+搜索内：.insearch
+搜索条：.searchselect
+搜索按钮：.serachbuttom
+输入文本框：.input
+.select
+/*表格样式*/
+表格整体框架：.listbox
+表格的宽度：.listbox-table
+表格头部文字样式：.listbox-header
+表格正文文字样式：.listbox-entry
+/*通用型*/
+通用：.GM/*这个有点郁闷,英文太差...*/
+通用内：.INGM
+通用左浮动：.GMfl(GM&nbsp;FLOAT&nbsp;LEFT)
+通用右浮动：.GMfr(GM&nbsp;FLOAT&nbsp;RIGHT)
+/*通用图片样式*/
+通用图片样式：.img
+/*清除浮动*/
+清除所有浮动：.clear
+清除左侧浮动：.clearleft
+清除右侧浮动：.clearright
+/*文字样式*/
+文字：.font
+/*新闻列表*/
+新闻列表：.fontnews
+/*View页字体总样式*/
+VIEW页字体：.fontview
+
+商　标：　　label
+标　题：　　title
+主导航：　　mainbav（globalnav）
+顶导航：　　topnav
+边导航：　　sidebar
+左导航：　　leftsidebar
+右导航：　　rightsidebar
+旗　志：　　logo
+标　语：　　banner
+菜单内容1：&nbsp;menu1&nbsp;content
+菜单容量：　menu&nbsp;container
+子菜单：　　submenu
+边导航图标：sidebarIcon
+注释：　　　note
+面包屑：　　breadcrumb(即页面所处位置导航提示）
+容器：　　　container
+内容：　　　content
+搜索：　　　search
+登陆：　　　Login
+功能区：　　shop(如购物车，收银台)
+当前的　　　current
+报头：　　　masthead&nbsp;
+摘要,&nbsp;概要　&nbsp;summary或general
+左边的浮动照图片&nbsp;photoleft&nbsp;
+右边的浮动图片&nbsp;photoright
+标题　　　title
+条目底端　　　&nbsp;entrybottom
+更多　　　&nbsp;extended或.more&nbsp;
+容器背景&nbsp;containerbg
+服务　　&nbsp;service
+服务链接　　&nbsp;servicelink
+线　　&nbsp;line
+文本　　&nbsp;text
+右边　　&nbsp;rightside
+版权　　&nbsp;copyright
+新闻　　&nbsp;news
+书皮　　&nbsp;wrapper
+介绍　　　　　　intro-part1
+专栏　　&nbsp;column
+路径　　&nbsp;pathways
+片断　　&nbsp;section
+模块　　&nbsp;module
+上导航　　&nbsp;subnav
+2.另外在编辑样式表时可用的注释可这样写：
+&lt;--&nbsp;Footer&nbsp;--&gt;
+内容区
+&lt;--&nbsp;End&nbsp;Footer&nbsp;--&gt;
+3.样式文件命名
+主要的&nbsp;master.css
+布局，版面&nbsp;layout.css
+专栏&nbsp;columns.css
+文字&nbsp;font.css
+打印样式&nbsp;print.css
+主题&nbsp;themes.css
+4.样式表中的注示
+实例一
+/*&nbsp;GLOBAL&nbsp;---------------------------&nbsp;*/
+/*&nbsp;LINKS&nbsp;---------------------------&nbsp;*/
+/*&nbsp;FORMS&nbsp;---------------------------&nbsp;*/
+/*&nbsp;IDS&nbsp;---------------------------&nbsp;*/
+/*&nbsp;HEADER&nbsp;---------------------------&nbsp;*/
+/*&nbsp;COLUMN&nbsp;1&nbsp;---------------------------&nbsp;*/
+/*&nbsp;COLUMN&nbsp;2&nbsp;---------------------------&nbsp;*/
+/*&nbsp;CLASSES&nbsp;---------------------------&nbsp;*/
+实例二
+HTML
+实例三（网易）
+CSS
+#UrsLogin
+#LogoNav
+#Column
+#Content1
+#bNav
+#Copyright
+#UrsLogin
+#LogoNav
+#SearchArea
+#ChannelArea
+#HotNews
+#NewsCenter
+.keyword
+#MallArea
+#city
+#aboutus
+……………………
+常见命名
+包含&nbsp;wrapper和container&nbsp;
+页头&nbsp;header&nbsp;或缩写为hd&nbsp;
+页尾&nbsp;footer&nbsp;或缩写为ft&nbsp;
+导航&nbsp;nav&nbsp;
+您的位置&nbsp;breadcrumbs&nbsp;
+二级导航&nbsp;sub_nav&nbsp;
+侧栏&nbsp;sidebar或side-column&nbsp;
+模块&nbsp;module
+数据库中的命名规则
+数据库涉及字符规则
+采用26个英文字母（区分大小写）和0&nbsp;－9这十个自然数，加上下划线_组成，共63个字符。不能出现其他字符（注释除外）。
+数据库对象命名规则
+数据库对象包括表、视图（查询）、存储过程（参数查询）、函数、约束。对象名字由前缀和实际名字组成，长度不超过30。前缀：使用小写字母。
+例如：表-tb&nbsp;视图-vi&nbsp;存储过程-sp&nbsp;函数-fn
+实际名字
+实际名字尽量描述实体的内容，由单词或单词组合，每个单词的首字母大写，其他字母小写，不以数字和_开头。
+例如：表&nbsp;User_Info&nbsp;视图&nbsp;UserList&nbsp;存储过程&nbsp;UserDelete
+因此，合法的对象名字类似如下。
+表&nbsp;tbUser_Info、tbMessage_Detail
+视图&nbsp;vi_MessageList
+存储过程&nbsp;sp_MessageAdd
+数据库表命名规则
+字段由前缀和实际名字组成。实际名字中首单词一个系统尽量采取同一单词。
+前缀：使用小写字母tb，表示表。
+例如：tbMember　　　tbMember_Info　　　tbForum_Board　　　tbForum_Thread1
+字段命名规则
+数字、字符、日期/时间、lob(大对象)、杂项，字段由表的简称、下划线，实际名字加后缀组成。
+后缀：使用小写字母，代表该字段的属性。
+例如:&nbsp;　User_Idint　　&nbsp;　&nbsp;User_Namestr　　&nbsp;　&nbsp;User_RegDatedtm
+视图命名规则
+字段由前缀和实际名字组成，中间用下划线连接。
+前缀：使用小写字母vi，表示视图。
+例如：vi_User　　　　vi_UserInfo
+存储过程命名规则
+字段由前缀和实际名字组成，中间用下划线连接。
+前缀：使用小写字母sp，表示存储过程。
+例如：sp_User
+数据库设计文档规则
+所有数据库设计要写成文档，文档以模块化形式表达。大致格式如下：
+　　&#39;-------------------------------------------
+　　&#39;　　表名：　　tbUser_Info　　
+　　&#39;　　建立人：UAM_Richard
+　　&#39;　　日期：　　2004-12-17
+　　&#39;　　版本：　　1.0
+　　&#39;　　描述：　　保存用户资料
+　　&#39;　　具体内容：
+　　&#39;　　UserId　　int，自动增量　　用户代码
+　　&#39;　　UserName　　char(12)　　用户名字
+　　&#39;　　......
+　　&#39;--------------------------------------------
+CSS类及id中的命名规则
+　　Web开发人员可以通过创建CSS类及id名称并使用这些名称来对div以及其他的格式页面元素进行标识。对开发人员来说，在命名重新定义XHTML标记（tags）的CSS&nbsp;selectors时，必须保证其与预定义的标记准确匹配，但就类以及id选择器名称而言，则仁者见仁，智者见智。然而随心所欲的为这些类以及id命名则并不是个好的习惯。
+1、直观命名
+当在设计Web页面以及需要对一个div进行标识的时候，最自然的想法就是使用可以描述元素所在页面位置的词汇来对其命名。
+例如：top-panel
+　　　horizontal-nav
+　　　left-side
+　　　center-column
+　　　right-col
+这些是CSS以及XHTML类和id的有效命名方式。这些词汇简单并且能够使人顾名思义，因此满足了标识页面元素以及相应的CSS样式的需要。
+但问题是这样的名称同页面内容的特定表达方式相关联。这些命名参考了某种特定页面布局中的页面元素位置，因此在这样的布局之外使用就会显得不合适甚至造成理解混乱。这些命名没有涉及文档内容的结构。因此，下面给出了对CSS类以及ID命名更好的方法。
+2、结构化命名
+这些是CSS以及XHTML类和id的有效命名方式。这些词汇简单并且能够使人顾名思义，因此满足了标识页面元素以及相应的CSS样式的需要。&nbsp;这些是CSS以及XHTML类和id的有效命名方式。这些词汇简单并且能够使人顾名思义，因此满足了标识页面元素以及相应的CSS样式的需要。
+有标记的相关信息都是用来描述文档的结构而不是外观。这样的特点使得我们可以通过简单的改变CSS的方式来对不同外观格式下的内容（content）以及标记（markup）进行重用。当你理解这种方式时，很容易就可以发现采用页面位置来为类以及id命名的方式在处理如音频（audio）等外观格式上显得非常不合适。因此，应当根据在文档中的使用目的而非出现位置来对类以及id进行结构化命名。
+可以按照如下所示的结构化方式来对类以及id名称命名：
+例如：branding
+　　　main-nav
+　　　subnav
+　　　main-content
+　　　sidebar
+这些名字同直观命名方式一样非常易懂，但他们描述了页面元素的作用而非位置。这使得代码更加符合使用纯粹的结构化标记（structural&nbsp;markup）的初衷，即开发人员可以在不改变标记的情况下对各种各样媒体下的显示格式进行处理。
+即使你不打算在其他的媒体上对Web页面进行格式修改，使用结构化命名方式还可以帮助你在日后的站点升级或重新设计中更为轻松。例如，结构化命名避免了当一个div同id&nbsp;right-column移动到页面左边后所带来的混乱。对div&nbsp;sidebar的采用这样的命名方式就显得更加适当，因为无论它出现在页面的哪一边，这个名字仍然对开发人员来说直观易懂。
+3、惯例
+Andy&nbsp;Clarke分析了40份由推崇标准化Web设计理念的开发人员所设计的Web站点的源代码。尽管类以及id名称很不统一，但是还是发现了一些频繁出现的常用名称。这里给出了最常用类/id名称的示例列表：
+例如：header
+　　　content
+　　　nav
+　　　sidebar
+　　　footer
+3.基于成员的命名规范
+基于成员的命名规范是指按照文件,文件夹的从属关系,通过归类的方法进行命名,这样可以使文件的排列具有较强的逻辑性.
+例如:一个图片文件是在鼠标点击之前为&quot;file_on&quot;.而在点击后的图片文件命名为&quot;file_off&quot;根据这个类别命名.更加的清晰.
+4.基于属性的命名规范
+例如:装饰性小图片按照&quot;&lt;图片内容说明&gt;_&lt;颜色&gt;_&lt;图片尺寸&gt;_&lt;序号&gt;.*&quot;来表现.这个为&quot;heart_red_401*334_1.jpg&quot;
+5.基于序数的命名规范
+在网页中一般为了减少图片的下载时间把图片分隔成一小部分,组成一个整体图.这时可以用二维数组的方式命名.
+例如:&nbsp;&nbsp;&nbsp;&nbsp;
+这个图片为&quot;donghua_11.jpg&quot;
+
+这个图片为&quot;donghua_12.jpg&quot;
+这个图片为&quot;donghua_21.jpg&quot;
+
+这个图片为&quot;donghua_22.jpg&quot;
+这些组成一幅图片.
+6.基于枚举的命名规范
+第一个为书的侧面为&quot;ddd_cemian.jpg&quot;
+第二个为书的封皮为&quot;ddd_fengpi.jpg&quot;
+第三个为书的封底为&quot;ddd_fengdi.jpg&quot;
+还有的网站上图片的欣赏也有不同的大小,可根据用户的意愿查看.
+例如:&quot;ddd_cemian_401*334.jpg&quot;和&quot;ddd_cemian_1024*768.jpg&quot;
+这些供大家建设网站参考.
+为避免代码冲突（这样做也会让你的代码更为通用），就要使用命名法则，这是一个很好的编程习惯。好啦，这里介绍一些常用的法则。
+◆命名变量、方法、以及属性
+变量、方法和属性的名称的第一个字母应该大写，并且名称应该能表达出它们的用途（或者说是意义）。
+变量
+.NET&nbsp;命名
+匈牙利命名
+描述
+Cstring
+EmployeeName
+szName
+Name&nbsp;of&nbsp;an&nbsp;employee.
+Int
+AttendanceCounter
+nCounter
+A&nbsp;counter&nbsp;of&nbsp;type&nbsp;long.
+Long
+NumberOfBytes
+lBytes
+A&nbsp;long&nbsp;type&nbsp;variable&nbsp;stores&nbsp;bytes.
+
+有时我们习惯于在定义中使用下划线&nbsp;&quot;_&quot;，例如：&nbsp;Add_Data(int&nbsp;a,&nbsp;int&nbsp;b).&nbsp;按照新的命名法则，这不是一个好的编程习惯，虽然它并没有错。你应该将定义&nbsp;Add_Data&nbsp;改为&nbsp;AddData。&nbsp;这不是微软的标准，你也不是必须按照这些法则。但是，在一些地方你会明白下边这些法则的合理性。
+就我个人而言，我更喜欢匈牙利命名法。当然，变量也使用同样的法则。如果你记得匈牙利命名法的话，一个布尔型的变量定义以&quot;b&quot;打头，比如：
+BOOL&nbsp;bFlag&nbsp;=&nbsp;TRUE;
+
+新的法则不推荐使用Flag&nbsp;和&nbsp;&quot;b&quot;：
+bool&nbsp;IsFileFound&nbsp;=&nbsp;true;
+你可以浏览一下MSDN，那里边有更多有关新的法则的说明。
+
+◆命名组件以及集合（Assemblies）
+为避免代码冲突,&nbsp;按照命名法则给你的库(在&nbsp;.NET&nbsp;中称为assembly)命名是一个良好的编程习惯。假定你是MindCracker&nbsp;公司的，你在开发一个用于扩充C#&nbsp;database&nbsp;类的库,&nbsp;把它的名字命名为MindCracker.DatabaseAssembly.ADOSet&nbsp;要比MyAssembly.Database.ADOSet好的多。
+再假定你的库有一个方法，它是从表中读取数据，并返回一个数据集。你如果取名为&nbsp;DataSet&nbsp;return_data()的话，改为DataSet&nbsp;ReturnData()好啦.
+你还应该在命名中遵循一个统一的单词顺序。例如，你有俩个表，分别为Employee&nbsp;和&nbsp;Manager&nbsp;，并且你还为它们分别定义了一个向表里边插入一条记录的方法，&nbsp;那么方法名AppendEmployee&nbsp;和&nbsp;AppendManager&nbsp;要比AppendEmployee&nbsp;和&nbsp;ManagerAppend要好。
+我更喜欢的二种方法，因为很容易清楚一个块儿结构和嵌套块儿结构。
+◆匈牙利命名法（efoxxx附）
+匈牙利命名法是一名匈牙利程序员发明的，而且他在微软工作了多年。此命名法就是通过微软的各种产品和文档传出来的。多数有经验的程序员，不管他们用的是哪门儿语言，都或多或少在使用它
+这种命名法的基本原则是：
+变量名＝属性＋类型＋对象描述
+即一个变量名是由三部分信息组成，这样，程序员很容易理解变量的类型、用途，而且便于记忆。
+下边是一些推荐使用的规则例子，你可以挑选使用，也可以根据个人喜好作些修改再用之。
+⑴属性部分：
+全局变量：&nbsp;g_
+常量&nbsp;：&nbsp;c_
+类成员变量：&nbsp;m_
+⑵类型部分：
+指针：&nbsp;p
+句柄：&nbsp;h
+布尔型：&nbsp;b
+浮点型：&nbsp;f
+无符号：&nbsp;u
+⑶描述部分：
+初始化：&nbsp;Init
+临时变量：&nbsp;Tmp
+目的对象：&nbsp;Dst
+源对象：&nbsp;Src
+窗口：&nbsp;Wnd
+将介绍匈牙利命名法，后面的例子里也会尽量遵守它和上面的代码风格。还是那句话，并不是要求所有的读者都要去遵守，但是希望读者作为一个现代的软件开发人员都去遵守它。
+a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数组
+b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BOOL&nbsp;(int)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;布尔(整数)
+by&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unsigned&nbsp;Char&nbsp;(Byte)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无符号字符(字节)
+c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Char&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符(字节)
+cb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Count&nbsp;of&nbsp;bytes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字节数
+cr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Color&nbsp;reference&nbsp;value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;颜色(参考)值
+cx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Count&nbsp;of&nbsp;x&nbsp;(Short)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x的集合(短整数)
+dw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DWORD&nbsp;&nbsp;&nbsp;(unsigned&nbsp;long)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;双字(无符号长整数)
+f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flags&nbsp;&nbsp;&nbsp;(usually&nbsp;multiple&nbsp;bit&nbsp;values)&nbsp;&nbsp;&nbsp;标志(一般是有多位的数值)
+fn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;函数
+g_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;global&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全局的
+h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Handle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;句柄
+i&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;整数
+l&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Long&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长整数
+lp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Long&nbsp;pointer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长指针
+m_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data&nbsp;member&nbsp;of&nbsp;a&nbsp;class&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个类的数据成员
+n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Short&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;短整数
+p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pointer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;指针
+s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符串
+sz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zero&nbsp;terminated&nbsp;String&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以0结尾的字符串
+tm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text&nbsp;metric&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文本规则
+u&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unsigned&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无符号整数
+ul&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unsigned&nbsp;long&nbsp;(ULONG)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无符号长整数
+w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WORD&nbsp;(unsigned&nbsp;short)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无符号短整数
+x,y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x,&nbsp;y&nbsp;coordinates&nbsp;(short)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;坐标值/短整数
+v&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;空
+下边举例说明：
+hwnd：&nbsp;h表示句柄，wnd表示窗口，合起来为“窗口句柄”。
+m_bFlag：&nbsp;m表示成员变量，b表示布尔，合起来为：“某个类的成员变量，布尔型，是一个状态标志”。
+C#&nbsp;.net&nbsp;命名规范&nbsp;
+一个好的命名规范如此难找，还是自己收藏一个比较好
+1&nbsp;ADO.NET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;命名规范&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据类型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据类型简写&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标准命名举例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Connection&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;con&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;conNorthwind&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Command&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmdReturnProducts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Parameter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parmProductID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DataAdapter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dadProducts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DataReader&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dtr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dtrProducts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DataSet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dstNorthWind&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DataTable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dtbl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dtblProduct&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DataRow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drowRow98&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DataColumn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dcol&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dcolProductID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DataRelation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drelMasterDetail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DataView&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dvw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dvwFilteredProducts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+WinForm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Control&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;命名规范
+数据类型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据类型简写&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标准命名举例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Label&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lbl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lblMessage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+LinkLabel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;llbl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;llblToday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Button&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btnSave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TextBox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txtName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MainMenu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mmnu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mmnuFile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CheckBox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chkStock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RadioButton&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rbtn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rbtnSelected&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+GroupBox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gbx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gbxMain&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PictureBox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;picImage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Panel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pnl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pnlBody&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DataGrid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dgrd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dgrdView&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ListBox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lstProducts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CheckedListBox&nbsp;&nbsp;&nbsp;&nbsp;clst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clstChecked&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ComboBox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cbo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cboMenu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ListView&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lvw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lvwBrowser&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TreeView&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tvw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tvwType&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TabControl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tctl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tctlSelected&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DateTimePicker&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dtp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dtpStartDate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+HscrollBar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hsb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hsbImage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+VscrollBar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vsb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vsbImage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Timer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmrCount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ImageList&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ilst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ilstImage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ToolBar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tlb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tlbManage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+StatusBar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stbFootPrint&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+OpenFileDialog&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;odlg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;odlgFile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+SaveFileDialog&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sdlg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sdlgSave&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FoldBrowserDialog&nbsp;&nbsp;&nbsp;fbdlg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fgdlgBrowser&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+FontDialog&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fdlg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fdlgFoot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ColorDialog&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cdlg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cdlgColor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PrintDialog&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pdlg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pdlgPrint&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebControl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;命名规范
+数据类型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据类型简写&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标准命名举例&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AdRotator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adrt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Button&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;btnSubmit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Calendar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;calMettingDates&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CheckBox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chkBlue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CheckBoxList&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chkl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chklFavColors&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CompareValidator&nbsp;&nbsp;&nbsp;valc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valcValidAge&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CustomValidator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valxDBCheck&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DataGrid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dgrd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dgrdTitles&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DataList&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dlst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dlstTitles&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DropDownList&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dropCountries&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+HyperLink&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lnk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lnkDetails&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Image&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imgAuntBetty&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ImageButton&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ibtn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ibtnSubmit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Label&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lbl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lblResults&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+LinkButton&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lbtn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lbtnSubmit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ListBox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lst&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lstCountries&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Panel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pnl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pnlForm2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PlaceHolder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plh&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plhFormContents&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RadioButton&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;radFemale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RadioButtonList&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;radl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;radlGender&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RangeValidator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valg&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valgAge&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RegularExpression&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valeEmail_Validator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Repeater&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rpt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rptQueryResults&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RequiredFieldValidator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valrFirstName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Table&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tbl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tblCountryCodes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TableCell&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tblc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tblcGermany&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TableRow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tblr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tblrCountry&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TextBox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txtFirstName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ValidationSummary&nbsp;&nbsp;&nbsp;&nbsp;vals&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valsFormErrors&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+XML&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlcTransformResults&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.NET中的命名规则
+名称空间的命名　
+　　&nbsp;命名名称空间的一般规则如下：&nbsp;
+　　&nbsp;CompanyName.TechnologyName
+　　这样，我们看到的名称空间应该是这样的：　　
+　&nbsp;　Microsoft.Office
+　　&nbsp;PowerSoft.PowerBuilder&nbsp;　&nbsp;　　&nbsp;　　&nbsp;　　&nbsp;　　&nbsp;　　&nbsp;　　&nbsp;　　&nbsp;　　&nbsp;　　&nbsp;　
+　　注意：这只是一个原则。第三方公司可以选择其它的名字。
+　　避免用公司名称或其它著名品牌的名称作为名称空间的前缀，这样会造成两个公布的名称空间有同一个名称的可能性。
+　　例如：&nbsp;将微软提供的Office自动类命名为Microsoft.Office
+　　使用Pascal大写方式，用逗号分隔逻辑成分。
+　　例如：Microsoft.Office.PowerPoint
+　　如果你的品牌使用的是非传统大写方式，那么一定要遵循你的品牌所确定使用的大写方式，即使这种方式背离了通常的名称空间大写规则。
+　　例如：NeXT.WebObjects
+　　　　　ee.cummings
+
+类和类成分的命名
+　　类的命名原则是用名词或名词短语命名类，使用Pascal大写。减少类名中缩写的使用量。不要使用任何类前缀（比如C），不要使用带下划线的字符。
+　　例如：public&nbsp;class&nbsp;FileStream&nbsp;{}
+　　　　　&nbsp;public&nbsp;class&nbsp;Button&nbsp;{}
+　　　　　&nbsp;public&nbsp;class&nbsp;String&nbsp;{}
+&nbsp;
+&nbsp;
+&nbsp;
+CSS&nbsp;类和ID的常用命名：
+网站头部:&nbsp;&nbsp;&nbsp;&nbsp;head/header(头部)&nbsp;top（顶部）导航：&nbsp;&nbsp;&nbsp;nanv&nbsp;导航具体区分：topnav(顶部导航)、mainnav(主导航)、mininav(迷你导航)、textnav(导航文本)、subnav(子导航/二级导航)
+旗帜、广告和商标：logo（旗帜）、brand(商标)、banner(标语)
+搜索：sreach(搜索)、sreachbox(搜索框)、sreachbtn(搜索按钮)、sreachinput（搜索输入框）
+注册和登录：login(登录)、regsiter(注册)、userbox(用户名/通行证的文本框)、password(密码)
+布局、分栏和框：&nbsp;&nbsp;&nbsp;layout(布局)、bigdiv(大div)、leftdiv(左分栏)、rightdiv(右分栏)、leftfloat(左浮动)、rightfloat(右浮动)、mainbox()、subpage(子页面/二级页面)
+页脚/底部：foot/footer(页脚/底部)、copyright(版权信息)、sitemap(网站地图)
+其他：content(内容)、skin(皮肤)、title(标题)、from(表单)、pic(图片)、news(新闻)、shop(购物区)、list(列表/清单)、newslist(新闻列表)、downloadlist(下载列表)、piclist(图片列表)、dropmenv(下拉菜单)、cor/corner(圆角)、homepage(首页)、crumb(当前位置导航)
+实际上上面的id命名我会经常用大小写和_来区分，比如主导航就是MainNav,如果还有必要在区分就是MainNav_1,MainNav_2等等。也可以使用&quot;类型+变量名称&quot;的规则来命名，比如写一个红色字体的class,可以
+.f_red&nbsp;{}(f是font&nbsp;字体的缩写)。总之原则是：大小写、_、缩写，大大增强代码的可读性。
+另外我还经常使用&quot;in&quot;的写法做子divd的命名，写法in+父div,这样可以避免前面命名过了后面div不知道怎么去命名。比如intop、inbox、infrom、inlogin等等。</pre><p><br/></p><div class="pagination">
+        <ul style="margin: 0;">
+          
+        </ul>
+      </div>
+<div class="ad"><script src=http://www.gonghaibo.com/d/js/acmsd/thea6.js></script></div>
+        <p class="post-copyright">此文由
+          lllomh(芈渡)          编辑，未经允许不得转载！：<a href="http://www.gonghaibo.com/">首页</a>&nbsp;>&nbsp;<a href="http://www.gonghaibo.com/life/">笔记分享</a> &raquo; <a href="http://www.gonghaibo.com/life/201406/56.html">html页面的CSS、DIV命名规则</a></p>
+      </article>
+      <div class="article-social"> <a href="JavaScript:makeRequest('/e/public/digg/?classid=5&id=56&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');" class="action action-like"><i class="glyphicon glyphicon-thumbs-up"></i> (<span id="diggnum"><script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=5&id=56&down=5></script></span>)</a>
+        <div class="action-share bdsharebuttonbox"> <strong>分享到：</strong> <a class="bds_qzone" data-cmd="qzone"></a><a class="bds_tsina" data-cmd="tsina"></a><a class="bds_weixin bdsm" data-cmd="weixin"></a><a class="bds_tqq" data-cmd="tqq"></a><a class="bds_sqq bdsm" data-cmd="sqq"></a><a class="bds_renren" data-cmd="renren"></a><a class="bds_douban" data-cmd="douban"></a> <span class="bds_count" data-cmd="count"></span> </div>
+      </div>
+      <nav class="article-nav"> <span class="article-nav-prev">上一篇<br>
+        <a href='http://www.gonghaibo.com/life/201406/55.html'>CSS hack大全</a></span> <span class="article-nav-next">下一篇<br>
+        <a href='http://www.gonghaibo.com/life/201406/57.html'>强大实用的jQuery幻灯片插件</a></span> </nav>
+
+
+      <!-- 多说评论框 start -->
+<!--PC版-->
+<div id="SOHUCS" ></div>
+<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysl2MHGw',
+conf: 'prod_be95b2ea8a3d90c270280b19d4305f18'
+});
+</script>
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"gonghaibo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+    </div>
+  </div>
+  <aside class="speedbar-wrap">
+    <div class="speedbar">
+      <ul class="speedbar-menu">
+        <li><a target="_blank" href="/remen">热门排行</a></li>
+        <li><a target="_blank" href="/tui">推荐阅读</a></li>
+        <li><a target="_blank" href="/zan">点赞热门</a></li>
+       <li><a href="/esjiy">儿时记忆</a></li>
+       <li><a href="/ytfj">沿途风景</a></li>
+         <li><a href="/xxsh">学校生活</a></li>
+      </ul>
+      <div class="speedbar-weixin">
+        <h5>微信扫一扫捐赠作者</h5>
+        <img src="/skin/ecms009/images/weixin-qrcode.jpg" alt=""> </div>
+    </div>
+  </aside>
+  <aside class="sidebar">
+    <div class="widget article-social"> <a href="JavaScript:makeRequest('/e/public/digg/?classid=5&id=56&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');" class="action action-like"><i class="glyphicon glyphicon-thumbs-up"></i> (<span id="diggnum"><script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=5&id=56&down=5></script></span>)</a>
+      <div class="action-share bdsharebuttonbox"> <strong>分享到：</strong> <a class="bds_qzone" data-cmd="qzone"></a><a class="bds_tsina" data-cmd="tsina"></a><a class="bds_weixin bdsm" data-cmd="weixin"></a><a class="bds_tqq" data-cmd="tqq"></a><a class="bds_sqq bdsm" data-cmd="sqq"></a><a class="bds_renren" data-cmd="renren"></a><a class="bds_douban" data-cmd="douban"></a> <span class="bds_count" data-cmd="count"></span> </div>
+    </div>
+    <div class="widget widget_ui_viewposts">
+      <h3 class="title"><strong>热门阅读</strong></h3>
+      <ul class="posts-xs">
+                <li class="item-1"><a href="http://www.gonghaibo.com/life/201406/58.html"><img data-src="/d/file/2017-12-20/3a78de8d7c49a59eb317dccb733bca31.jpg" class="thumb"/>
+          <h2>JQuery 判断滚动条是否出现，判断垂直滚动条是否到某个位置</h2>
+          <p>
+            <time>12-20</time>
+            <span class="post-views">阅读(<script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=5&id=58></script>)</span></p>
+          </a></li>
+                <li class="item-1"><a href="http://www.gonghaibo.com/life/201406/59.html"><img data-src="/d/file/2017-12-20/06d495e5051c983da4e49ba114bf4de0.jpg" class="thumb"/>
+          <h2>CANVAS绘图渐变</h2>
+          <p>
+            <time>12-20</time>
+            <span class="post-views">阅读(<script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=5&id=59></script>)</span></p>
+          </a></li>
+                <li class="item-1"><a href="http://www.gonghaibo.com/view/201406/129.html"><img data-src="/d/file/20140617/llb2g1f1pem.jpg" class="thumb"/>
+          <h2>世界各地美妙奇幻的彩虹，美到窒息</h2>
+          <p>
+            <time>06-17</time>
+            <span class="post-views">阅读(<script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=3&id=129></script>)</span></p>
+          </a></li>
+                <li class="item-1"><a href="http://www.gonghaibo.com/life/201406/56.html"><img data-src="/d/file/2017-12-20/e652942ccdf6eb8f6c91b74820fd010a.jpg" class="thumb"/>
+          <h2>html页面的CSS、DIV命名规则</h2>
+          <p>
+            <time>12-20</time>
+            <span class="post-views">阅读(<script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=5&id=56></script>)</span></p>
+          </a></li>
+                <li class="item-1"><a href="http://www.gonghaibo.com/life/201406/57.html"><img data-src="/d/file/2017-12-20/71516311297f9654d65cbfdb0ac8b432.jpg" class="thumb"/>
+          <h2>强大实用的jQuery幻灯片插件</h2>
+          <p>
+            <time>12-20</time>
+            <span class="post-views">阅读(<script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=5&id=57></script>)</span></p>
+          </a></li>
+                <li class="item-1"><a href="http://www.gonghaibo.com/food/201406/68.html"><img data-src="/d/file/20140617/o0yjnuapt4w.jpg" class="thumb"/>
+          <h2>各种水果DIY的动物和人物造型</h2>
+          <p>
+            <time>06-17</time>
+            <span class="post-views">阅读(<script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=4&id=68></script>)</span></p>
+          </a></li>
+              </ul>
+    </div>
+    <div class="widget widget_ui_tags">
+      <h3 class="title"><strong>热门话题</strong></h3>
+      <div class="items">        <a title="9个话题" href="/e/tags/?tagname=让你">让你</a>               <a title="6个话题" href="/e/tags/?tagname=又有">又有</a>               <a title="6个话题" href="/e/tags/?tagname=让人">让人</a>               <a title="6个话题" href="/e/tags/?tagname=教你">教你</a>               <a title="4个话题" href="/e/tags/?tagname=泰坦">泰坦</a>               <a title="4个话题" href="/e/tags/?tagname=28.2">28.2</a>               <a title="4个话题" href="/e/tags/?tagname=句话">句话</a>               <a title="4个话题" href="/e/tags/?tagname=24">24</a>               <a title="4个话题" href="/e/tags/?tagname=又可">又可</a>               <a title="4个话题" href="/e/tags/?tagname=微距">微距</a>               <a title="4个话题" href="/e/tags/?tagname=拼出">拼出</a>               <a title="4个话题" href="/e/tags/?tagname=用食材">用食材</a>               <a title="4个话题" href="/e/tags/?tagname=世界上">世界上</a>               <a title="4个话题" href="/e/tags/?tagname=带你">带你</a>               <a title="4个话题" href="/e/tags/?tagname=22">22</a>               <a title="4个话题" href="/e/tags/?tagname=1.34">1.34</a>               <a title="4个话题" href="/e/tags/?tagname=15">15</a>               <a title="4个话题" href="/e/tags/?tagname=用线">用线</a>               <a title="4个话题" href="/e/tags/?tagname=史瑞克">史瑞克</a>               <a title="4个话题" href="/e/tags/?tagname=现实中">现实中</a>               <a title="4个话题" href="/e/tags/?tagname=用书">用书</a>               <a title="4个话题" href="/e/tags/?tagname=河上">河上</a>               <a title="4个话题" href="/e/tags/?tagname=塞纳">塞纳</a>               <a title="3个话题" href="/e/tags/?tagname=大家都">大家都</a>               <a title="3个话题" href="/e/tags/?tagname=唇妆有">唇妆有</a>               <a title="3个话题" href="/e/tags/?tagname=唇上">唇上</a>               <a title="3个话题" href="/e/tags/?tagname=手工制作">手工制作</a>               <a title="3个话题" href="/e/tags/?tagname=绘画作品">绘画作品</a>               <a title="3个话题" href="/e/tags/?tagname=味儿">味儿</a>               <a title="2个话题" href="/e/tags/?tagname=EVE">EVE</a>       </div>
+    </div>
+    <div class="widget widget_ui_posts">
+      <h3 class="title"><strong>特别推荐</strong></h3>
+      <ul class="posts-xs">
+                <li class="item-"><a href="http://www.gonghaibo.com/view/201406/129.html"><img data-src="/d/file/20140617/llb2g1f1pem.jpg" class="thumb"/>
+          <h2>世界各地美妙奇幻的彩虹，美到窒息</h2>
+          <p>
+            <time>06-17</time>
+            <span class="post-views">阅读(<script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=3&id=129></script>)</span></p>
+          </a></li>
+             </ul>
+    </div>
+  </aside>
+</section>
+<footer class="footer"> &copy; 2015 <a href="http://www.gonghaibo.com/"></a> &nbsp; <a href="http://www.miitbeian.gov.cn/" target="_blank">沪备11002373号-1</a> </footer>
+<script>
+var jsui={
+    uri: '/skin/ecms009'
+};
+</script>
+<!--ADD_CODE_FOOTER_START--> 
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ecms009"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!--ADD_CODE_FOOTER_END--> 
+<script type='text/javascript' src='/skin/ecms009/js/one.js?ver=5.6'></script>
+</body>
+</html>

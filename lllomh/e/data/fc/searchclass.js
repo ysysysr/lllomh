@@ -1,0 +1,1 @@
+document.write("<option value=\'16\'>|-儿时记忆</option><option value=\'17\'>|-沿途风景</option><option value=\'18\'>|-学校生活</option><option value=\'15\'>|-关于我</option><option value=\'3\'>|-慢生活</option><option value=\'5\'>|-笔记分享</option><option value=\'4\'>|-心情日志</option><option value=\'14\'>|-留言板</option>");

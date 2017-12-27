@@ -1,0 +1,1 @@
+document.write("<option value=\'3\' style=\'background:#99C4E3\'>|-慢生活</option><option value=\'5\' style=\'background:#99C4E3\'>|-笔记分享</option><option value=\'4\' style=\'background:#99C4E3\'>|-心情日志</option>");

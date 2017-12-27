@@ -1,0 +1,11 @@
+<? exit();?>
+			<p>百秀小编我是一个十足的吃货，各种水果没有不喜欢吃的。现在终于可以吃到桃子了，最近新学的去桃子皮的方法也和大家分享一下，极致的享受美味是我们吃货的毕生追求。</p>
+<p>赶快学一下吧，很简单的哦！对于和桃子类似的水果，像西红柿，都可以这样去皮的！</p>
+<div id=\"attachment_3910\" style=\"width: 840px\" class=\"wp-caption alignnone\"><img class=\"wp-image-3910 size-full\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/miloz2vjuor.jpg\" alt=\"给桃子完美去皮的妙招\" width=\"830\" height=\"551\" /><p class=\"wp-caption-text\">步骤1：准备一盆沸水和一盆冰水</p></div>
+<div id=\"attachment_3911\" style=\"width: 840px\" class=\"wp-caption alignnone\"><img class=\"wp-image-3911 size-full\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/bf4s3izkgfj.jpg\" alt=\"给桃子完美去皮的妙招\" width=\"830\" height=\"551\" /><p class=\"wp-caption-text\">步骤2：用刀在桃子头部划一个十字叉</p></div>
+<div id=\"attachment_3912\" style=\"width: 840px\" class=\"wp-caption alignnone\"><img class=\"wp-image-3912 size-full\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/zfqwamdn34r.jpg\" alt=\"给桃子完美去皮的妙招\" width=\"830\" height=\"1248\" /><p class=\"wp-caption-text\">步骤3：把要去皮的桃子放在沸水里大约35-45秒（整个桃子都要浸入沸水中）</p></div>
+<div id=\"attachment_3913\" style=\"width: 840px\" class=\"wp-caption alignnone\"><img class=\"wp-image-3913 size-full\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/og4pt2ipqcv.jpg\" alt=\"给桃子完美去皮的妙招\" width=\"830\" height=\"551\" /><p class=\"wp-caption-text\">步骤4：用漏勺把桃子捞放到冰水盆里，放置凉后捞出</p></div>
+<div id=\"attachment_3914\" style=\"width: 840px\" class=\"wp-caption alignnone\"><img class=\"wp-image-3914 size-full\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/uczklppotxk.jpg\" alt=\"给桃子完美去皮的妙招\" width=\"830\" height=\"551\" /><p class=\"wp-caption-text\">步骤5：捞出后从头部开始去皮</p></div>
+<div id=\"attachment_3915\" style=\"width: 840px\" class=\"wp-caption alignnone\"><img class=\"wp-image-3915 size-full\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/kvepfdeeubs.jpg\" alt=\"给桃子完美去皮的妙招\" width=\"830\" height=\"551\" /><p class=\"wp-caption-text\">桃子被完整的去了皮</p></div>
+<div id=\"attachment_3916\" style=\"width: 840px\" class=\"wp-caption alignnone\"><img class=\"wp-image-3916 size-full\" src=\"http://ecms009.99yuanma.net/ecms009_pic/20140615/v5ynqkoosfs.jpg\" alt=\"给桃子完美去皮的妙招\" width=\"830\" height=\"551\" /><p class=\"wp-caption-text\">不会影响桃子的外观哦</p></div>
+		

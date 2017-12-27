@@ -1,0 +1,16 @@
+/* 
+yecha 设计编写 原创设计 请勿仿制 
+QQ:372009617
+*/
+@CHARSET "UTF-8";
+.loginbox { border-top: 1px solid #F4F4F4; position: relative; z-index: 1; }
+.loginleft { width: 620px; overflow: hidden; min-height: 400px; border-right: 1px solid #F4F4F4; }
+.loginright { position: absolute; right: 0; top: 20px; width: 420px; }
+.loginleft ul { }
+.loginleft li { font-size: 14px; padding: 15px 10px; vertical-align: top; border-bottom: 1px solid #F4F4F4; position:relative;}
+.loginleft li label{ width: 120px; font-size: 15px; display: inline-block; text-align: right; margin-right: 12px; }
+.newTxt { background: #FBFBFB url(txtBg.png) repeat-x left top; height: 36px; line-height: 36px; border: 1px solid #ABADB3; font-size: 14px; padding: 0 5px;}
+.Validform_checktip {line-height:22px; padding:2px 8px;color:#fff;display:inline-block;font-size:12px;}
+.Validform_wrong{ background:red;}
+.Validform_right {background:#390;}
+.loginleft li select{ padding:5px;}
