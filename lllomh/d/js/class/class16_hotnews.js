@@ -1,1 +1,1 @@
-document.write("<li><a href=\"http://www.gonghaibo.com/esjiy/2015-10-13/156.html\" title=\"樱花树下\">樱花树下</a></li>");
+document.write("");

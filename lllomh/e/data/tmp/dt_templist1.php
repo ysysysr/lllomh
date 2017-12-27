@@ -10,18 +10,17 @@ if(!defined('InEmpireCMS'))
 <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 <meta name="apple-mobile-web-app-title" content="<?=$public_r[sitename]?>">
-<meta property="qc:admins" content="031010715761412110156375">
 <meta http-equiv="Cache-Control" content="no-siteapp">
+<link rel='stylesheet' id='_common-css'  href='/skin/ecms009/css/common.css?ver=11.1' type='text/css' media='all' />
+<script type="text/javascript" src="/e/data/js/ajax.js"></script>
 <meta name="keywords" content="[!--pagekey--]" />
 <meta name="description" content="[!--pagedes--] " />
 <title>[!--pagetitle--]--<?=$public_r[sitename]?></title>
-<link rel='stylesheet' id='_common-css'  href='/skin/ecms009/css/common.css?ver=5.6' type='text/css' media='all' />
-<script type="text/javascript" src="[!--news.url--]e/data/js/ajax.js"></script>
 <link rel="shortcut icon" href="/skin/ecms009/images/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/skin/ecms009/images/icon-144x144.png">
 <!--[if lt IE 9]><script src="/skin/ecms009/js/html5.js"></script><![endif]-->
 </head>
-<body class="page page-id-1645 page-template-default">
+<body class="home blog"data-navto="home">
 <header class="header">
   <div class="container">
     <h1 class="logo"><a href="[!--news.url--]" title="<?=$public_r[sitename]?>"><?=$public_r[sitename]?></a></h1>
@@ -65,9 +64,20 @@ $sql=$empire->query("select classid,classname,islast from {$dbtbpre}enewsclass w
     </form>
   </div>
 </header>
-<div class="container container-page">
-  <div class="pageside">
-<div class="speedbar">
+<section class="container">
+  <div class="content-wrap">
+    <div class="content excerpts">
+      <h3 class="title"><strong>[!--class.name--]</strong></h3>
+      [!--empirenews.listtemp--]<!--list.var1-->[!--empirenews.listtemp--]
+      <div class="pagination">
+        <ul>
+          [!--show.listpage--]
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="speedbar-wrap">
+    <div class="speedbar">
       <ul class="speedbar-menu">
         <li><a target="_blank" href="/remen">热门排行</a></li>
         <li><a target="_blank" href="/tui">推荐阅读</a></li>
@@ -77,22 +87,59 @@ $sql=$empire->query("select classid,classname,islast from {$dbtbpre}enewsclass w
          <li><a href="/xxsh">学校生活</a></li>
       </ul>
       <div class="speedbar-weixin">
-        <h5>扫一扫“我的新浪微博”</h5>
+        <h5>微信扫一扫捐赠作者</h5>
         <img src="/skin/ecms009/images/weixin-qrcode.jpg" alt=""> </div>
     </div>
-  </div>
-  <div class="content">
-    <header class="article-header">
-      <h1 class="article-title">[!--class.name--]</h1>
-    </header>
-    <article class="article-content">
-      <ol class="teamnewslist">
-        [!--empirenews.listtemp--]<!--list.var1-->[!--empirenews.listtemp--]
-      </ol>
-    </article>
-    <p>&nbsp;</p>
-  </div>
-</div>
+  </aside>
+  <aside class="sidebar">
+ <div class="widget widget_ui_viewposts bodr_none">
+
+          <div class="clock">
+                <div id='hour' class="hour"></div>
+                <div id='minute' class="minute"></div>
+                <div id="second" class="second"></div>
+         </div>
+           
+        </div>
+    <div class="widget widget_ui_tags">
+      <h3 class="title"><strong>热门话题</strong></h3>
+      <div class="items"><?php
+$bqno=0;
+$ecms_bq_sql=sys_ReturnEcmsLoopBq("select * from [!db.pre!]enewstags order by num DESC limit 30",0,24,0);
+if($ecms_bq_sql){
+while($bqr=$empire->fetch($ecms_bq_sql)){
+$bqsr=sys_ReturnEcmsLoopStext($bqr);
+$bqno++;
+?>
+        <?
+        echo '<a title="'.$bqr['num'].'个话题" href="/e/tags/?tagname='.$bqr['tagname'].'">'.$bqr['tagname'].'</a>';
+        ?>
+       <?php
+}
+}
+?></div>
+    </div>
+    <div class="widget widget_links">
+      <h3 class="title"><strong>友情链接</strong></h3>
+      <ul class='xoxo blogroll'>
+         <?php
+$bqno=0;
+$ecms_bq_sql=sys_ReturnEcmsLoopBq('select * from [!db.pre!]enewslink where checked=1 and lpic="" order by lid',20,24,0);
+if($ecms_bq_sql){
+while($bqr=$empire->fetch($ecms_bq_sql)){
+$bqsr=sys_ReturnEcmsLoopStext($bqr);
+$bqno++;
+?>
+      <li><a href="<?=$bqr[lurl]?>" target="_blank"><?=$bqr[lname]?></a></li>
+      <?php
+}
+}
+?>
+      </ul>
+    </div>
+   
+  </aside>
+</section>
 <footer class="footer"> &copy; 2015 <a href="[!--news.url--]"></a> &nbsp; <a href="http://www.miitbeian.gov.cn/" target="_blank">沪备11002373号-1</a> </footer>
 <script>
 var jsui={
@@ -100,20 +147,8 @@ var jsui={
 };
 </script> 
 <!--ADD_CODE_FOOTER_START--> 
-
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"<?=$public_r['add_duoshuo']?>"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
 <?=$public_r['add_tongji']?>
 <!--ADD_CODE_FOOTER_END--> 
-<script type='text/javascript' src='/skin/ecms009/js/one.js?ver=5.6'></script>
+<script type='text/javascript' src='/skin/ecms009/js/one.js?ver=11.1'></script>
 </body>
 </html>

@@ -1,1 +1,1 @@
-document.write("<li><a href=\"http://www.gonghaibo.com/food/2017-12-22/160.html\" title=\"测试工具大全\">测试工具大全</a></li>");
+document.write("<li><a href=\"http://www.gonghaibo.com/life/2017-12-27/169.html\" title=\"修改 input type 属性方式\">修改 input type 属性方式</a></li>");

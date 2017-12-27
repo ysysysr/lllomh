@@ -1317,9 +1317,9 @@ filter:alpha(opacity=90);} */
 
 
 
-.pagebar{position: fixed;top: 206px;font-size: 32px;letter-spacing: -29px;color: #eaeaea;display: ;padding: 20px 40px 20px 0;border-radius: 2px;width: 46px;overflow: hidden;}
+.pagebar{position: fixed;top: 206px;z-index: 9999999;font-size: 32px;letter-spacing: -29px;color: #eaeaea;display: ;padding: 20px 40px 20px 0;border-radius: 2px;width: 46px;overflow: hidden;}
 .pagebar span{position: relative;z-index: 2;color: #fff;}
-.pagebar:hover{background-color: #ddd;color: #fff;}
+.pagebar:hover{background-color: rgba(255, 71, 0, 0.38);color: #fff;}
 .pagebar:hover span{color: #ddd;}
 .pagebar-next{margin-left: 30px;}
 
@@ -1556,3 +1556,29 @@ header.title .share{float: right;font-size: 14px;height: 24px;line-height: 22px;
 }
 
 @media print{}
+
+
+.clock{
+  position: relative;
+  width: 537px;
+  height: 537px;
+  margin: 0 auto;
+  background:url('http://liyajieblog.oss-cn-qingdao.aliyuncs.com/liyajieblog/imgs/clock/clock.jpg') no-repeat;
+  background-size: 100% 100%
+}
+.clock div{
+  position: absolute;
+  width: 537px;
+  height: 537px;
+}
+.clock .hour{
+  background: url('http://liyajieblog.oss-cn-qingdao.aliyuncs.com/liyajieblog/imgs/clock/hour.png') center no-repeat;
+}
+.clock .minute{
+  background: url('http://liyajieblog.oss-cn-qingdao.aliyuncs.com/liyajieblog/imgs/clock/minute.png') center no-repeat;
+}
+.clock .second{
+  background: url('http://liyajieblog.oss-cn-qingdao.aliyuncs.com/liyajieblog/imgs/clock/second.png') center no-repeat;
+}
+
+.bodr_none{border-right: none;}

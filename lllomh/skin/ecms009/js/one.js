@@ -712,3 +712,24 @@ $.fn.serializeObject=function(){var a={},k=this.serializeArray();$.each(k,functi
     }
 
 })(jQuery);
+
+
+var ss = document.getElementById('second');
+	var mm = document.getElementById('minute');
+	var hh = document.getElementById('hour');
+	var timer = setInterval(function(){
+		var date = new Date();
+		var hour = date.getHours();
+		var minute = date.getMinutes();
+		var second = date.getSeconds();
+		var sec = date.getMilliseconds();
+
+		var s = second + sec / 1000; //总共走了这么多秒
+		var m = minute + s / 60; //总共走了这么多分钟
+		var h = hour % 12 + m / 60;// 总共走了这么多小时
+
+		hh.style.webkitTransform = 'rotate('+h * 30+'deg)';
+		mm.style.webkitTransform = 'rotate('+m * 6+'deg)';
+		ss.style.webkitTransform = 'rotate('+s * 6+'deg)';
+
+	},100)

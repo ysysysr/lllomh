@@ -1,1 +1,1 @@
-document.write("");
+document.write("<li><a href=\"http://www.gonghaibo.com/life/2017-12-27/169.html\" title=\"修改 input type 属性方式\">修改 input type 属性方式</a></li>");

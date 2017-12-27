@@ -96,29 +96,15 @@ conf: 'prod_be95b2ea8a3d90c270280b19d4305f18'
     </div>
   </aside>
   <aside class="sidebar">
-    <div class="widget widget_ui_viewposts">
-      <h3 class="title"><strong>热门阅读</strong></h3>
-      <ul class="posts-xs">
-        <?php
-$bqno=0;
-$ecms_bq_sql=sys_ReturnEcmsLoopBq('news',6,19,1,'','onclick DESC');
-if($ecms_bq_sql){
-while($bqr=$empire->fetch($ecms_bq_sql)){
-$bqsr=sys_ReturnEcmsLoopStext($bqr);
-$bqno++;
-?>
-        <li class="item-1"><a href="<?=$bqsr['titleurl']?>"><img data-src="<?=sys_ResizeImg($bqr[titlepic],240,180,1,'')?>" class="thumb"/>
-          <h2><?=$bqr['title']?></h2>
-          <p>
-            <time><?=date('m-d',$bqr[newstime])?></time>
-            <span class="post-views">阅读(<script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=<?=$bqr['classid']?>&id=<?=$bqr['id']?>></script>)</span></p>
-          </a></li>
-        <?php
-}
-}
-?>
-      </ul>
-    </div>
+ <div class="widget widget_ui_viewposts bodr_none">
+
+          <div class="clock">
+                <div id='hour' class="hour"></div>
+                <div id='minute' class="minute"></div>
+                <div id="second" class="second"></div>
+         </div>
+           
+        </div>
 
     <div class="widget widget_ui_tags">
       <h3 class="title"><strong>热门话题</strong></h3>

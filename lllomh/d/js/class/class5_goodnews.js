@@ -1,1 +1,1 @@
-document.write("");
+document.write("<li><a href=\"http://www.gonghaibo.com/life/2017-12-27/163.html\" title=\"nodejs控制文件\">nodejs控制文件</a></li>");
