@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-title" content="lllomh(芈渡)">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<link rel='stylesheet' id='_common-css'  href='/skin/ecms009/css/common.css?ver=11.1' type='text/css' media='all' />
+<script type="text/javascript" src="/e/data/js/ajax.js"></script>
+<meta name="keywords" content="" />
+<meta name="description" content="纯js实现选项卡笔记 " />
+<title>纯js实现选项卡笔记--lllomh(芈渡)</title>
+<link rel="shortcut icon" href="/skin/ecms009/images/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/skin/ecms009/images/icon-144x144.png">
+<!--[if lt IE 9]><script src="/skin/ecms009/js/html5.js"></script><![endif]-->
+</head>
+<body class="single single-post single-format-standard">
+<header class="header">
+  <div class="container">
+    <h1 class="logo"><a href="http://www.gonghaibo.com/" title="lllomh(芈渡)">lllomh(芈渡)</a></h1>
+    <ul class="nav">
+      <li class=""><a href="http://www.gonghaibo.com/">首页</a></li>
+      <li class=""><a href="http://www.gonghaibo.com/gyw/">关于我</a><ul class="sub-menu"></ul></li><li class=""><a href="http://www.gonghaibo.com/view/">慢生活</a></li><li class="active"><a href="http://www.gonghaibo.com/life/">笔记分享</a></li><li class=""><a href="http://www.gonghaibo.com/food/">心情日志</a></li><li class=""><a href="http://www.gonghaibo.com/lyban/">留言板</a><ul class="sub-menu"></ul></li>    </ul>
+    <div class="slinks"> <a href="http://www.gonghaibo.com//lyban" title="留言板">留言</a> - <a href="http://www.gonghaibo.com/site_misc/music/">音乐</a> - <a href="http://www.gonghaibo.com/zan">点赞墙</a> - <a href="http://www.gonghaibo.com//gyw" title="关于我">关于我</a> - <a href="//shang.qq.com/wpa/qunwpa?idkey=ec2c5c138f48abe7e713f3a1aba893a8774585dbb2e15762d93adb9fb8f7ef94"  target="_blank"  title="javascript:void(0)">QQ群</a><br>
+      <a class="feed-weixin" rel="external nofollow" href="javascript:;">捐赠作者</a> - <a rel="external nofollow" href="https://github.com/lllomh" title="xinlang" target="_blank">github</a> - <a rel="external nofollow" href="http://t.qq.com/a29405484" title="alibaixiu" target="_blank">腾讯微博</a> - <a rel="external nofollow" href="http://897963688.qzone.qq.com" title="/e/web/?type=rss2" target="_blank">QQ空间</a> </div>
+    <form onsubmit="return checkSearchForm()" method="post" name="searchform" id="searchform" class="searchform" action="/e/search/index.php" >
+    <input type="hidden" value="title" name="show"></input>
+          <input type="hidden" value="1" name="tempid"></input>
+          <input type="hidden" value="news" name="tbname"></input>
+          <input name="mid" value="1" type="hidden">
+          <input name="dopost" value="search" type="hidden">
+      <input class="search-input" name="keyboard" type="text" placeholder="输入关键字">
+      <button class="search-btn" name="submit" type="submit">搜索</button>
+    </form>
+  </div>
+</header>
+<section class="container">
+  <div class="content-wrap">
+    <div class="content">
+      <header class="article-header">
+        <h1 class="article-title"><a href="http://www.gonghaibo.com/life/2017-12-27/165.html">纯js实现选项卡笔记</a></h1>
+        <div class="article-meta">
+          <time class="new">
+            2分钟前          </time>
+          <span class="item">小编：lllomh </span> <span class="item">分类：<a href="http://www.gonghaibo.com/life/" title="查看笔记分享中的全部文章" rel="category tag">笔记分享</a></span> <span class="item">信息来源：</span> <span class="item post-views">阅读(<script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=5&id=165&addclick=1></script>)</span> <span class="item"></span> </div>
+      </header>
+      <article class="article-content">
+<div class="ad"><script src=http://www.gonghaibo.com/d/js/acmsd/thea5.js></script></div>
+<div class="article-pic" style=" display:none">
+<img src="http://www.gonghaibo.com/skin/ecms009/images/random/titlepic/14.jpg" />
+</div>
+<pre class="brush:html;toolbar:false">&lt;!DOCTYPE&nbsp;html&gt;&lt;html&gt;&lt;head&gt;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;charset=&quot;UTF-8&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;实践题&nbsp;-&nbsp;选项卡&lt;/title&gt;&nbsp;&nbsp;&nbsp;&nbsp;&lt;style&nbsp;type=&quot;text/css&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;CSS样式制作&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*{margin:0;padding:0;font:normal&nbsp;12px&nbsp;&quot;微软雅黑&quot;;color:#000000;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ul{list-style-type:&nbsp;none;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a{text-decoration:&nbsp;none;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#tab-list{width:&nbsp;275px;height:190px;margin:&nbsp;20px&nbsp;auto;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ul1{border-bottom:&nbsp;2px&nbsp;solid&nbsp;#8B4513;height:&nbsp;32px;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ul1&nbsp;li{display:&nbsp;inline-block;width:&nbsp;60px;line-height:&nbsp;30px;text-align:&nbsp;center;border:&nbsp;1px&nbsp;solid&nbsp;#999;border-bottom:&nbsp;none;margin-left:&nbsp;5px;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ul1&nbsp;li:hover{cursor:&nbsp;pointer;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ul1&nbsp;li.active{border-top:2px&nbsp;solid&nbsp;#8B4513;border-bottom:2px&nbsp;solid&nbsp;#FFFFFF;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#tab-list&nbsp;div{border:&nbsp;1px&nbsp;solid&nbsp;#7396B8;border-top:&nbsp;none;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#tab-list&nbsp;div&nbsp;li{height:&nbsp;30px;line-height:&nbsp;30px;text-indent:&nbsp;8px;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.show{display:&nbsp;block;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.hide{display:&nbsp;none;}&nbsp;&nbsp;&nbsp;&nbsp;&lt;/style&gt;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&nbsp;type=&quot;text/javascript&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.onload&nbsp;=&nbsp;function()&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;oUl1&nbsp;=&nbsp;document.getElementById(&quot;ul1&quot;);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;aLi&nbsp;=&nbsp;oUl1.getElementsByTagName(&quot;li&quot;);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;oDiv&nbsp;=&nbsp;document.getElementById(&quot;tab-list&quot;);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;aDiv&nbsp;=&nbsp;oDiv.getElementsByTagName(&quot;div&quot;);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(var&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;aLi.length;&nbsp;i++)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aLi[i].index&nbsp;=&nbsp;i;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aLi[i].onclick&nbsp;=&nbsp;function()&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(var&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;aLi.length;&nbsp;i++)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aLi[i].className&nbsp;=&nbsp;&quot;&quot;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.className&nbsp;=&nbsp;&quot;active&quot;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(var&nbsp;j&nbsp;=&nbsp;0;&nbsp;j&nbsp;&lt;&nbsp;aDiv.length;&nbsp;j++)&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aDiv[j].className&nbsp;=&nbsp;&quot;hide&quot;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aDiv[this.index].className&nbsp;=&nbsp;&quot;show&quot;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;&nbsp;&lt;/head&gt;&lt;body&gt;&lt;!--&nbsp;HTML页面布局&nbsp;--&gt;&lt;div&nbsp;id=&quot;tab-list&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&nbsp;id=&quot;ul1&quot;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;房产&lt;/li&gt;&lt;li&gt;家居&lt;/li&gt;&lt;li&gt;二手房&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;275万购昌平邻铁三居&nbsp;总价20万买一居&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;200万内购五环三居&nbsp;140万安家东三环&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;北京首现零首付楼盘&nbsp;53万购东5环50平&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;京楼盘直降5000&nbsp;中信府&nbsp;公园楼王现房&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;40平出租屋大改造&nbsp;美少女的混搭小窝&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;经典清新简欧爱家&nbsp;90平老房焕发新生&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;新中式的酷色温情&nbsp;66平撞色活泼家居&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;瓷砖就像选好老婆&nbsp;卫生间烟道的设计&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;通州豪华3居260万&nbsp;二环稀缺2居250w甩&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;西3环通透2居290万&nbsp;130万2居限量抢购&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;黄城根小学学区仅260万&nbsp;121平70万抛!&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a&nbsp;href=&quot;javascript:;&quot;&gt;独家别墅280万&nbsp;苏州桥2居优惠价248万&lt;/a&gt;&lt;/li&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&lt;/div&gt;&nbsp;&lt;/body&gt;&lt;/html&gt;</pre><p><br/></p><div class="pagination">
+        <ul style="margin: 0;">
+          
+        </ul>
+      </div>
+<div class="ad"><script src=http://www.gonghaibo.com/d/js/acmsd/thea6.js></script></div>
+        <p class="post-copyright">此文由
+          lllomh(芈渡)          编辑，未经允许不得转载！：<a href="http://www.gonghaibo.com/">首页</a>&nbsp;>&nbsp;<a href="http://www.gonghaibo.com/life/">笔记分享</a> &raquo; <a href="http://www.gonghaibo.com/life/2017-12-27/165.html">纯js实现选项卡笔记</a></p>
+      </article>
+      <div class="article-social"> <a href="JavaScript:makeRequest('/e/public/digg/?classid=5&id=165&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');" class="action action-like"><i class="glyphicon glyphicon-thumbs-up"></i>感觉不错，很赞哦！ (<span id="diggnum"><script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=5&id=165&down=5></script></span>)</a>
+        <div class="action-share bdsharebuttonbox"> <strong>分享到：</strong> <a class="bds_qzone" data-cmd="qzone"></a><a class="bds_tsina" data-cmd="tsina"></a><a class="bds_weixin bdsm" data-cmd="weixin"></a><a class="bds_tqq" data-cmd="tqq"></a><a class="bds_sqq bdsm" data-cmd="sqq"></a><a class="bds_renren" data-cmd="renren"></a><a class="bds_douban" data-cmd="douban"></a> <span class="bds_count" data-cmd="count"></span> </div>
+      </div>
+      <nav class="article-nav"> <span class="article-nav-prev">上一篇<br>
+        <a href='http://www.gonghaibo.com/life/2017-12-27/164.html'>纯CSS绘制三角形（各种角度）</a></span> <span class="article-nav-next">下一篇<br>
+        <a href='http://www.gonghaibo.com/life/2017-12-27/166.html'>document.all的用法</a></span> </nav>
+
+
+      <!-- 多说评论框 start -->
+<!--PC版-->
+<div id="SOHUCS" ></div>
+<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cysl2MHGw',
+conf: 'prod_be95b2ea8a3d90c270280b19d4305f18'
+});
+</script>
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"gonghaibo"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+    </div>
+  </div>
+  <aside class="speedbar-wrap">
+    <div class="speedbar">
+      <ul class="speedbar-menu">
+        <li><a target="_blank" href="/remen">热门排行</a></li>
+        <li><a target="_blank" href="/tui">推荐阅读</a></li>
+        <li><a target="_blank" href="/zan">点赞热门</a></li>
+       <li><a href="/esjiy">儿时记忆</a></li>
+       <li><a href="/ytfj">沿途风景</a></li>
+         <li><a href="/xxsh">学校生活</a></li>
+      </ul>
+      <div class="speedbar-weixin">
+        <h5>微信扫一扫捐赠作者</h5>
+        <img src="/skin/ecms009/images/weixin-qrcode.jpg" alt=""> </div>
+    </div>
+  </aside>
+  <aside class="sidebar">
+    <div class="widget article-social"> <a href="JavaScript:makeRequest('/e/public/digg/?classid=5&id=165&dotop=1&doajax=1&ajaxarea=diggnum','EchoReturnedText','GET','');" class="action action-like"><i class="glyphicon glyphicon-thumbs-up"></i>感觉不错，很赞哦！ (<span id="diggnum"><script src=http://www.gonghaibo.com/e/public/ViewClick/?classid=5&id=165&down=5></script></span>)</a>
+      <div class="action-share bdsharebuttonbox"> <strong>分享到：</strong> <a class="bds_qzone" data-cmd="qzone"></a><a class="bds_tsina" data-cmd="tsina"></a><a class="bds_weixin bdsm" data-cmd="weixin"></a><a class="bds_tqq" data-cmd="tqq"></a><a class="bds_sqq bdsm" data-cmd="sqq"></a><a class="bds_renren" data-cmd="renren"></a><a class="bds_douban" data-cmd="douban"></a> <span class="bds_count" data-cmd="count"></span> </div>
+    </div>
+    <div class="widget widget_ui_viewposts">
+      <h3 class="title"><strong>热门阅读</strong></h3>
+      <ul class="posts-xs">
+              </ul>
+    </div>
+    <div class="widget widget_ui_tags">
+      <h3 class="title"><strong>热门话题</strong></h3>
+      <div class="items">        <a title="9个话题" href="/e/tags/?tagname=让你">让你</a>               <a title="6个话题" href="/e/tags/?tagname=又有">又有</a>               <a title="6个话题" href="/e/tags/?tagname=让人">让人</a>               <a title="6个话题" href="/e/tags/?tagname=教你">教你</a>               <a title="4个话题" href="/e/tags/?tagname=泰坦">泰坦</a>               <a title="4个话题" href="/e/tags/?tagname=28.2">28.2</a>               <a title="4个话题" href="/e/tags/?tagname=句话">句话</a>               <a title="4个话题" href="/e/tags/?tagname=24">24</a>               <a title="4个话题" href="/e/tags/?tagname=又可">又可</a>               <a title="4个话题" href="/e/tags/?tagname=微距">微距</a>               <a title="4个话题" href="/e/tags/?tagname=拼出">拼出</a>               <a title="4个话题" href="/e/tags/?tagname=用食材">用食材</a>               <a title="4个话题" href="/e/tags/?tagname=世界上">世界上</a>               <a title="4个话题" href="/e/tags/?tagname=带你">带你</a>               <a title="4个话题" href="/e/tags/?tagname=22">22</a>               <a title="4个话题" href="/e/tags/?tagname=1.34">1.34</a>               <a title="4个话题" href="/e/tags/?tagname=15">15</a>               <a title="4个话题" href="/e/tags/?tagname=用线">用线</a>               <a title="4个话题" href="/e/tags/?tagname=史瑞克">史瑞克</a>               <a title="4个话题" href="/e/tags/?tagname=现实中">现实中</a>               <a title="4个话题" href="/e/tags/?tagname=用书">用书</a>               <a title="4个话题" href="/e/tags/?tagname=河上">河上</a>               <a title="4个话题" href="/e/tags/?tagname=塞纳">塞纳</a>               <a title="3个话题" href="/e/tags/?tagname=大家都">大家都</a>               <a title="3个话题" href="/e/tags/?tagname=唇妆有">唇妆有</a>               <a title="3个话题" href="/e/tags/?tagname=唇上">唇上</a>               <a title="3个话题" href="/e/tags/?tagname=手工制作">手工制作</a>               <a title="3个话题" href="/e/tags/?tagname=绘画作品">绘画作品</a>               <a title="3个话题" href="/e/tags/?tagname=味儿">味儿</a>               <a title="2个话题" href="/e/tags/?tagname=EVE">EVE</a>       </div>
+    </div>
+  
+  </aside>
+</section>
+<footer class="footer"> &copy; 2015 <a href="http://www.gonghaibo.com/"></a> &nbsp; <a href="http://www.miitbeian.gov.cn/" target="_blank">沪备11002373号-1</a> </footer>
+<script>
+var jsui={
+    uri: '/skin/ecms009'
+};
+</script>
+<!--ADD_CODE_FOOTER_START--> 
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ecms009"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!--ADD_CODE_FOOTER_END--> 
+<script type='text/javascript' src='/skin/ecms009/js/one.js?ver=5.6'></script>
+</body>
+</html>

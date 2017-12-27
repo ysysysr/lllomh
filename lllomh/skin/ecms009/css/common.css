@@ -557,7 +557,7 @@ body{margin:98px 0 0;font-size:14px;line-height:20px;color:#555;overflow-x: hidd
 .speedbar-menu li:last-child a{border-radius: 0 0 4px 4px;border-bottom: none;}
 
 .speedbar-weixin{border-radius: 4px;border: 1px solid #eaeaea;margin-top: 10px;}
-.speedbar-weixin h5{padding: 12px 0 0 20px;font-size: 12px;margin: 0;line-height: 16px;}
+.speedbar-weixin h5{padding: 5px 0 3px 20px;font-size: 12px;margin: 0;line-height: 16px;}
 .speedbar-weixin img{max-width: 100%;}
 
 /*.sidebar.isfix{width: 440px;*width:410px;padding-top: 0;overflow: hidden;background-color: #f9f9f9;padding: 15px;border-left: 1px solid #eee;position: absolute;right: 0;top: 0;bottom:0;border-radius: 0 5px 5px 0;}*/
