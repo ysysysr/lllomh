@@ -166,11 +166,7 @@ var duoshuoQuery = {short_name:"gonghaibo"};
     </div>
  <div class="widget widget_ui_viewposts bodr_none">
 
-          <div class="clock">
-                <div id='hour' class="hour"></div>
-                <div id='minute' class="minute"></div>
-                <div id="second" class="second"></div>
-         </div>
+     <canvas id="canvas"></canvas>
            
         </div>
     <div class="widget widget_ui_tags">

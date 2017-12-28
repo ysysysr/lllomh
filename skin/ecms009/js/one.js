@@ -714,22 +714,2724 @@ $.fn.serializeObject=function(){var a={},k=this.serializeArray();$.each(k,functi
 })(jQuery);
 
 
-var ss = document.getElementById('second');
-	var mm = document.getElementById('minute');
-	var hh = document.getElementById('hour');
-	var timer = setInterval(function(){
-		var date = new Date();
-		var hour = date.getHours();
-		var minute = date.getMinutes();
-		var second = date.getSeconds();
-		var sec = date.getMilliseconds();
 
-		var s = second + sec / 1000; //总共走了这么多秒
-		var m = minute + s / 60; //总共走了这么多分钟
-		var h = hour % 12 + m / 60;// 总共走了这么多小时
 
-		hh.style.webkitTransform = 'rotate('+h * 30+'deg)';
-		mm.style.webkitTransform = 'rotate('+m * 6+'deg)';
-		ss.style.webkitTransform = 'rotate('+s * 6+'deg)';
+/*城堡*/
 
-	},100)
+/*
+This code is experimentational, I wouldn't use it... Oh, and drag the mouse for a parallaxing effect
+ */
+
+'use strict';
+
+// --------------------
+// Init
+// --------------------
+
+let width = 600;
+let height = 600;
+
+let canvas = document.getElementById('canvas');
+let context = canvas.getContext('2d');
+
+let offscreenCanvas = document.createElement('canvas');
+offscreenCanvas.width = width;
+offscreenCanvas.height = height;
+let offscreenContext = offscreenCanvas.getContext('2d');
+
+canvas.width = width;
+canvas.height = height;
+
+function getMousePos(canvas, evt) {
+    let rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+    };
+}
+
+let mousePos = {x: canvas.width / 2, y: canvas.height / 2};
+let mouseDown = false;
+
+canvas.addEventListener('mousemove', function(evt) {
+    mousePos = getMousePos(canvas, evt);
+}, false);
+
+canvas.addEventListener('mousedown', function(evt) {
+    mouseDown = true;
+}, false);
+
+canvas.addEventListener('mouseup', function(evt) {
+    mouseDown = false;
+});
+
+// --------------------
+// Drawing
+// --------------------
+
+function Clear() {
+
+    this.update = function() {
+
+        context.fillStyle = 'rgba(0, 0, 0, 1)';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.fill();
+    };
+}
+
+function PolyLine(
+    points,
+    detailIncrement,
+    speed,
+    amplitude,
+    amplitudeDecrease,
+    resolution,
+    lineSize,
+    color
+) {
+
+    this.points = points !== undefined ? points : [];
+    this.detailIncrement = detailIncrement !== undefined ? detailIncrement : 0.01;
+    this.speed = speed !== undefined ? speed : .1;
+    this.amplitude = amplitude !== undefined ? amplitude : 0;
+    this.amplitudeDecrease = amplitudeDecrease !== undefined ? amplitudeDecrease : 0;
+    this.start = this.points !== undefined ? this.points.splice(0, 1)[0] : [];
+    this.resolution = resolution === undefined ? 1 : resolution;
+    this.acceleration = new Vector(0, 0);
+    this.color = color !== undefined ? color : 'rgba(255, 255, 255, .2)';
+    this.lineSize = lineSize !== undefined ? lineSize : 4;
+
+    if (Array.isArray(this.detailIncrement)) {
+        this.detailIncrementAdd = this.detailIncrement[1] > this.detailIncrement[0];
+        this.detailIncrementEnd = this.detailIncrement[1];
+        this.detailIncrement = this.detailIncrement[0];
+    }
+}
+
+PolyLine.prototype.updatePoints = function(points) {
+    this.points = points;
+    this.start = this.points.splice(0, 1)[0];
+};
+
+PolyLine.prototype.update = function() {
+    this.draw();
+};
+
+PolyLine.prototype.applyForce = function(force) {
+    this.acceleration.add(force);
+};
+
+PolyLine.prototype.increaseDetailIncrement = function() {
+    if (this.detailIncrementAdd) {
+        if (this.detailIncrement < this.detailIncrementEnd) {
+            this.detailIncrement += .005;
+        }
+    } else {
+        if (this.detailIncrement > this.detailIncrementEnd) {
+            this.detailIncrement -= .005;
+        }
+    }
+};
+
+PolyLine.prototype.draw = function() {
+
+    let point = 0;
+    let location = this.start.get();
+    let step = new Vector(0, 0);
+    let detailCounter = 0;
+    let amplitude = this.amplitude;
+    let decrease = this.amplitudeDecrease;
+    let radius = this.lineSize;
+
+    this.increaseDetailIncrement();
+
+    while(true) {
+
+        let distance = location.distance(this.points[point]);
+
+        if (distance <= this.resolution) {
+            point++;
+            if (this.points[point] === undefined) {
+                break;
+            } else {
+                step = new Vector(0, 0);
+            }
+        }
+
+        let direction = Vector.subtract(this.points[point], location);
+        direction.normalize();
+
+        amplitude -= decrease;
+        if (amplitude <= 0) {
+            amplitude = 0;
+        }
+
+        let x = location.x + (Math.cos((detailCounter * this.resolution)) * amplitude);
+        let y = location.y + (Math.sin((detailCounter * this.resolution)) * amplitude);
+
+        context.beginPath();
+        context.arc(x, y, radius, 0, Math.PI * 2, false);
+        context.fillStyle = this.color;
+        context.closePath();
+        context.fill();
+
+        radius -= (this.detailIncrement / 5);
+        if (radius <= 0.0) {
+            radius = 0.0;
+        }
+
+        step.add(direction);
+        step.limit(this.resolution);
+
+        location.add(step);
+
+        detailCounter += this.detailIncrement;
+    }
+};
+
+function Vector(x, y, z) {
+
+    this.x = x;
+    this.y = y;
+    this.z = z === undefined ? 0 : z;
+
+    this.add = function(v) {
+
+        this.x += v.x;
+        this.y += v.y;
+        this.z += v.z;
+
+        return this;
+    };
+
+    this.addX = function(n) {
+        this.x += n;
+
+        return this;
+    };
+
+    this.addY = function(n) {
+        this.y += n;
+
+        return this;
+    };
+
+    this.addZ = function(n) {
+        this.z += n;
+
+        return this;
+    };
+
+    this.subtract = function(v) {
+        this.x -= v.x;
+        this.y -= v.y;
+        this.z -= v.z;
+
+        return this;
+    };
+
+    this.subtractX = function(n) {
+        this.x -= n;
+
+        return this;
+    };
+
+    this.subtractY = function(n) {
+        this.y -= n;
+
+        return this;
+    };
+
+    this.subtractZ = function(n) {
+        this.z -= n;
+
+        return this;
+    };
+
+    this.multiply = function(n) {
+
+        this.x *= n;
+        this.y *= n;
+        this.z *= n;
+
+        return this;
+    };
+
+    this.multiplyX = function(n) {
+        this.x *= n;
+
+        return this;
+    };
+
+    this.multiplyY = function(n) {
+        this.y *= n;
+
+        return this;
+    };
+
+    this.multiplyZ = function(n) {
+        this.z *= z;
+
+        return this;
+    };
+
+    this.divide = function(n) {
+
+        this.x /= n;
+        this.y /= n;
+        this.z /= n;
+
+        return this;
+    };
+
+    this.magnitude = function() {
+
+        return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+    };
+
+    this.normalize = function() {
+        var m = this.magnitude();
+        if (m !== 0) {
+            this.divide(m);
+        }
+    };
+
+    this.limit = function(n) {
+
+        if (this.magnitude() > n) {
+            this.normalize();
+            this.multiply(n);
+        }
+    };
+
+    this.distance = function(v) {
+
+        var dx = this.x - v.x,
+            dy = this.y - v.y,
+            dz = this.z - v.z;
+
+        return Math.sqrt(dx * dx + dy * dy + dz * dz);
+    };
+
+    this.invert = function() {
+
+        this.x *= -1;
+        this.y *= -1;
+        this.z *= -1;
+
+        return this;
+    };
+
+    this.inverseX = function() {
+
+        this.x *= -1;
+
+        return this;
+    };
+
+    this.inverseY = function() {
+
+        this.y *= -1;
+
+        return this;
+    };
+
+    this.inverseZ = function() {
+
+        this.z *= -1;
+
+        return this;
+    };
+
+    this.get = function() {
+
+        return new Vector(this.x, this.y, this.z);
+    };
+
+    this.dot = function(v) {
+
+        return this.x * v.x + this.y * v.y + this.z * v.z;
+    };
+}
+
+// -------------------------
+// Vector: Static
+// -------------------------
+
+Vector.add = function(v1, v2) {
+
+    var v3 = new Vector(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
+
+    return v3;
+};
+
+Vector.subtract = function(v1, v2) {
+
+    var v3 = new Vector(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
+
+    return v3;
+};
+
+Vector.multiply = function(v1, v2) {
+
+    var v3 = new Vector(v1.x * v2.x, v1.y * v2.y, v1.z * v2.z);
+
+    return v3;
+};
+
+Vector.divide = function(v1, v2) {
+
+    if (typeof v2 === Vector) {
+        var v3 = new Vector(v1.x / v2.x, v1.y / v2.y, v1.z / v2.z);
+    } else {
+        var v3 = new Vector(v1.x / v2, v1.y / v2, v1.z / v2);
+    }
+
+    return v3;
+};
+
+Vector.distance = function(v1, v2) {
+
+    return v1.distance(v2);
+};
+
+Vector.copy = function(v) {
+    return new Vector(v.x, v.y, v.z);
+};
+
+Vector.random2D = function() {
+
+    var x = parseInt((Math.random() * 3)) -1;
+    var y = parseInt((Math.random() * 3)) -1;
+    var z = parseInt((Math.random() * 2)) -1;
+
+    var v1 = new Vector(x, y, z);
+    return v1;
+};
+
+// -------------------------
+// Fibonacci
+// -------------------------
+
+function fibonacci(num, memo) {
+    memo = memo || {};
+    if (memo[num]) return memo[num];
+    if (num <= 1) return 1;
+    return memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2, memo);
+}
+
+function getRandomBetween(min, max) {
+    return Math.floor(min + Math.random()*(max+1 - min));
+}
+
+// Sky
+'use strict';
+
+class Sky {
+
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    update() {
+
+
+
+        this.draw();
+    }
+
+    draw() {
+        let gradient = context.createRadialGradient(
+            this.x,
+            canvas.height / 2,
+            this.x,
+            this.x,
+            this.y,
+            0
+        );
+        gradient.addColorStop(0, '#8510b1');
+        gradient.addColorStop(.2, '#6a25ef');
+        gradient.addColorStop(.7, '#2f880d');
+        gradient.addColorStop(1, '#52EF16');
+        context.fillStyle = gradient;
+        context.fillRect(0, 0, canvas.width, canvas.height);
+    }
+}
+
+// Ground
+'use strict';
+
+class Ground {
+
+    constructor(horizon) {
+        this.horizon = horizon;
+    }
+
+    update() {
+        let gradient = context.createLinearGradient(0,canvas.height - this.horizon,0,canvas.height);
+        gradient.addColorStop(0, 'rgba(0, 0, 0, .4)');
+        gradient.addColorStop(1, 'rgba(0,0,0,1)');
+        context.fillStyle = gradient;
+        context.fillRect(0, canvas.height - this.horizon, canvas.width, canvas.height - this.horizon);
+    }
+}
+
+// Pattern
+
+'use strict';
+
+class Pattern {
+
+    constructor(position, width, height) {
+        this.position = position;
+
+        this.width = width;
+        this.height = height;
+
+        this.counter = 0;
+    }
+
+    update() {
+        this.draw();
+        this.counter += .02;
+    }
+
+    getPosition() {
+        return this.position;
+    }
+
+    getWidth() {
+        return this.width;
+    }
+
+    getHeight() {
+        return this.height;
+    }
+
+    draw() {
+        offscreenContext.clearRect(0, 0, offscreenCanvas.width, offscreenCanvas.height);
+
+        for (let i = .1 ; i < Math.PI * 10 ; i+=.1) {
+            offscreenContext.beginPath();
+            let color = {
+                r: Math.floor(i * 10),
+                g: '',
+                b: ''
+            };
+            offscreenContext.strokeStyle = 'rgba(' + color.r + ', 0, 255, 1)';
+            offscreenContext.lineWidth = 1 + (i / 10);
+            let moveToX = this.position.x + ((Math.sin(this.counter + (i-.1)) * ((this.width / 2) - (i-.1))));
+            let moveToY =
+                (this.position.y - ((i-.1) * 6) ) +
+                ((Math.cos(this.counter + (i-.1)) * ((this.height / 2) - ((i-.1) * 2))));
+            let posX = this.position.x + ((Math.sin(this.counter + i) * (this.width / 2 - i)));
+            let posY = (this.position.y - (i * 6) ) + ((Math.cos(this.counter + i) * ((this.height
+                / 2) - (i * 2))));
+            offscreenContext.moveTo(moveToX, moveToY);
+            offscreenContext.lineTo(posX, posY);
+            offscreenContext.stroke();
+        }
+    }
+
+}
+
+// Layers
+
+'use strict';
+
+class Layers {
+
+    constructor(baseStart, baseEnd, debug) {
+        this.start = baseStart;
+        this.end = baseEnd;
+
+        let count = 13;
+
+        this.floorLines = [];
+        for (let i = 1 ; i <= count ; i++) {
+            this.floorLines.push({
+                start: Vector.add(this.start, new Vector(fibonacci(i), fibonacci(i) / 2)),
+                end: Vector.subtract(this.end, new Vector(fibonacci(i), (fibonacci(i) / 2) * -1))
+            });
+        }
+
+        this.skyLines = [];
+        for (let i = 1 ; i <= count ; i++) {
+            this.skyLines.push({
+                start: Vector.add(this.start, new Vector(fibonacci(i), (fibonacci(i) * -1))),
+                end: Vector.subtract(this.end, new Vector(fibonacci(i), fibonacci(i)))
+            });
+        }
+
+        this.drawFloorLines = [];
+        this.drawSkyLines = [];
+
+        this.createDrawPositions();
+        this.debug = debug;
+    }
+
+    getHighestLayerHeight() {
+        return this.getLayerHeight(this.drawFloorLines.length -1);
+    }
+
+    getHighestLayerWidth() {
+        return this.getLayerWidth(this.drawFloorLines.length - 1);
+    }
+
+    getLayerHeight(layer) {
+        return this.drawFloorLines[layer].start.y - this.drawSkyLines[layer].start.y;
+    }
+
+    getLayerWidth(layer) {
+        return this.drawFloorLines[layer].end.x - this.drawFloorLines[layer].start.x;
+    }
+
+    getLayerStart(layer) {
+        return this.drawFloorLines[layer].start;
+    }
+
+    getLayerEnd(layer) {
+        return this.drawFloorLines[layer].end;
+    }
+
+    createDrawPositions() {
+        let mouse = new Vector(mousePos.x, mousePos.y);
+        let canvasSize = new Vector(canvas.width / 2, canvas.height / 2);
+        mouse.subtract(canvasSize);
+
+        this.floorLines.map((line, index) => {
+            if (this.drawFloorLines[index] === undefined) {
+                this.drawFloorLines[index] = {
+                    start: {},
+                    end: {}
+                };
+            }
+            let add = fibonacci(index);
+            this.drawFloorLines[index].start = Vector.add(line.start, new Vector((mouse.x * add) / canvas.width, (mouse.y * add) / (this.start.y * 1)));
+            this.drawFloorLines[index].end = Vector.add(line.end, new Vector((mouse.x * add) / canvas.width, (mouse.y * add) / (this.end.y * 1)));
+        });
+
+        this.skyLines.map((line, index) => {
+            if (this.drawSkyLines[index] === undefined) {
+                this.drawSkyLines[index] = {
+                    start: {},
+                    end: {}
+                };
+            }
+            let add = fibonacci(index);
+            this.drawSkyLines[index].start = Vector.add(line.start, new Vector((mouse.x * add) / canvas.width, (mouse.y * add) / (this.start.y * 1)));
+            this.drawSkyLines[index].end = Vector.add(line.end, new Vector((mouse.x * add) / canvas.width, (mouse.y * add) / (this.end.y * 1)));
+        });
+    }
+
+    update() {
+        if (mouseDown) {
+            this.createDrawPositions();
+        }
+        this.draw();
+    }
+
+    drawLine(start, end) {
+        if (start.x <= end.x) {
+            context.beginPath();
+            context.lineWidth = 1;
+            context.strokeStyle = 'red';
+            context.setLineDash([]);
+            context.moveTo(start.x, start.y);
+            context.lineTo(end.x, end.y);
+            context.stroke();
+        }
+    }
+
+    draw() {
+        if (this.debug) {
+            this.drawFloorLines.map(line => {
+                this.drawLine(line.start, line.end);
+            });
+            this.drawSkyLines.map((line, index) => {
+                this.drawLine(line.start, line.end);
+                this.drawLine(line.start, this.drawFloorLines[index].start);
+                this.drawLine(line.end, this.drawFloorLines[index].end);
+            });
+        }
+    }
+}
+
+// Animation
+
+'use strict';
+
+class Animation {
+
+    constructor(
+        from,
+        to,
+        bounce,
+        immediate,
+        debug
+    ) {
+
+        this.start = new Vector(from.x, from.y);
+        this.location = from;
+        this.to = to;
+        this.velocity = new Vector(0, 0);
+        this.startDraw = undefined;
+        this.locationDraw = undefined;
+        this.toDraw = undefined;
+        this.shape = undefined;
+        this.immediate = immediate;
+        this.bounce = bounce === undefined ? 1 : bounce;
+        this.debug = debug;
+        this.animate = true;
+    }
+
+    update(callback) {
+        if (this.animate) {
+
+            if (this.immediate) {
+                this.location.add(this.to);
+                this.animate = false;
+                return;
+            }
+
+            let direction = Vector.subtract(this.to, this.location);
+            let magnitude = direction.magnitude();
+
+            direction.normalize();
+            direction.multiply(magnitude / 100);
+
+            this.velocity.add(direction);
+            this.velocity.limit(magnitude * this.bounce);
+            this.location.add(this.velocity);
+
+            if (magnitude < 0.1) {
+                if (callback !== undefined) {
+                    callback();
+                }
+                this.animate = false;
+            }
+
+            if (this.debug) {
+                this.draw();
+            }
+        }
+    }
+
+    drawStart() {
+
+        let draw;
+        if (this.startDraw !== undefined) {
+            draw = this.startDraw;
+        } else {
+            draw = this.start;
+        }
+
+        context.beginPath();
+        context.lineWidth = 1;
+        context.strokeStyle = 'red';
+        context.setLineDash([]);
+        context.arc(draw.x, draw.y, 2, 0, Math.PI * 2, false);
+        context.stroke();
+    }
+
+    drawLocation() {
+
+        let draw;
+        if (this.locationDraw !== undefined) {
+            draw = Vector.add(this.location, this.shape.position)
+        } else {
+            draw = this.location;
+        }
+
+        context.beginPath();
+        context.lineWidth = 1;
+        context.strokeStyle = 'red';
+        context.setLineDash([5, 15]);
+        context.arc(draw.x, draw.y, 10, 0, Math.PI * 2, false);
+        context.stroke();
+    }
+
+    drawTo() {
+
+        let draw;
+        if (this.toDraw) {
+            draw = this.toDraw;
+        } else {
+            draw = this.to;
+        }
+
+        context.beginPath();
+        context.lineWidth = 1;
+        context.strokeStyle = 'red';
+        context.setLineDash([]);
+        context.arc(draw.x, draw.y, 2, 0, Math.PI * 2, false);
+        context.stroke();
+    }
+
+    drawStartTo() {
+
+        let startDraw;
+        if (this.startDraw !== undefined) {
+            startDraw = this.startDraw;
+        } else {
+            startDraw = this.start;
+        }
+
+        let toDraw;
+        if (this.toDraw !== undefined) {
+            toDraw = this.toDraw;
+        } else {
+            toDraw = this.to;
+        }
+
+        context.beginPath();
+        context.lineWidth = 1;
+        context.strokeStyle = 'red';
+        context.setLineDash([5, 15]);
+        context.moveTo(startDraw.x, startDraw.y);
+        context.lineTo(toDraw.x, toDraw.y);
+        context.stroke();
+    }
+
+    draw() {
+        this.drawStart();
+        this.drawLocation();
+        this.drawTo();
+        this.drawStartTo();
+    }
+}
+
+// AnimationShapePoints
+
+'use strict';
+
+class AnimationShapePoints extends Animation {
+
+    constructor(from, to, shape, center, bounce, immediate, debug) {
+
+        // We will subtract the center here
+        shape.subtractCenter = false;
+        to = Vector.subtract(to, center);
+
+        super(from, to, bounce, immediate, debug);
+
+        this.shape = shape;
+        this.startDraw = Vector.add(this.start, shape.position);
+        this.locationDraw = Vector.add(this.location, shape.position);
+        this.toDraw = Vector.add(this.to, shape.position);
+    }
+
+    static getSize(points) {
+
+        // Initialize with the first point, not 0 because the lowest point may be more than 0
+        let lowestX = points[0].x,
+            highestX = points[0].x,
+            lowestY = points[0].y,
+            highestY = points[0].y;
+
+        points.map(point => {
+            if (point.x < lowestX) { lowestX = point.x; }
+            if (point.x > highestX) { highestX = point.x; }
+            if (point.y < lowestY) { lowestY = point.y; }
+            if (point.y > highestY) { highestY = point.y; }
+        });
+
+        let dx = lowestX - highestX,
+            dy = lowestY - highestY;
+
+        return {
+            bound1: new Vector(lowestX, lowestY),
+            bound2: new Vector(highestX, highestY),
+            width: Math.sqrt(dx * dx),
+            height: Math.sqrt(dy * dy)
+        };
+    }
+
+    static getCenter(center, sizes) {
+        if (center === undefined) {
+            center = new Vector(sizes.width / 2, sizes.height / 2);
+        }
+        switch (center) {
+            case Shape.TOPLEFT:
+                center = new Vector(sizes.bound1.x, sizes.bound1.y);
+                break;
+            case Shape.TOPCENTER:
+                center = new Vector(sizes.width / 2, sizes.bound1.y);
+                break;
+            case Shape.TOPRIGHT:
+                center = new Vector(sizes.bound2.x, sizes.bound1.y);
+                break;
+            case Shape.CENTERLEFT:
+                center = new Vector(sizes.bound1.x, sizes.height / 2);
+                break;
+            case Shape.CENTERCENTER:
+                center = new Vector(sizes.width / 2, sizes.height / 2);
+                break;
+            case Shape.CENTERRIGHT:
+                center = new Vector(sizes.bound2.x, sizes.height / 2);
+                break;
+            case Shape.BOTTOMLEFT:
+                center = new Vector(sizes.bound1.x, sizes.bound2.y);
+                break;
+            case Shape.BOTTOMCENTER:
+                center = new Vector(sizes.width / 2, sizes.bound2.y);
+                break;
+            case Shape.BOTTOMRIGHT:
+                center = new Vector(sizes.bound2.x, sizes.bound2.y);
+                break;
+        }
+        return center;
+    }
+}
+
+// Shape
+
+'use strict';
+
+class Shape {
+
+    constructor(
+        points,
+        position,
+        center,
+        angle,
+        cornerRoundness,
+        color,
+        debug
+    ) {
+        // Init class variables
+        this.points = points;
+        this.position = position;
+        this.width = 0;
+        this.height = 0;
+        this.initialCenter = [center][0];
+        this.center = center;
+        this.cornerRoundness = cornerRoundness;
+        this.angle = angle;
+        this.debug = debug;
+        this.color = color !== undefined ? color : 'rgba(0, 0, 0, 1)';
+
+        this.offset = new Vector(0, 0);
+
+        this.subtractCenter = true;
+
+        this.bound1 = new Vector(0, 0);
+        this.bound2 = new Vector(0, 0);
+    }
+
+    initialize() {
+        let size = this.getSize(this.points);
+        this.bound1 = size.bound1;
+        this.bound2 = size.bound2;
+        this.width = size.width;
+        this.height = size.height;
+        this.center = this.getCenter(this.initialCenter);
+        this.absoluteCenter = this.getCenter(Shape.CENTERCENTER);
+    }
+
+    getSize(points) {
+
+        // Initialize with the first point, not 0 because the lowest point may be more than 0
+        let lowestX = points[0].x,
+            highestX = points[0].x,
+            lowestY = points[0].y,
+            highestY = points[0].y;
+
+        points.map(point => {
+            if (point.x < lowestX) { lowestX = point.x; }
+            if (point.x > highestX) { highestX = point.x; }
+            if (point.y < lowestY) { lowestY = point.y; }
+            if (point.y > highestY) { highestY = point.y; }
+        });
+
+        let dx = lowestX - highestX,
+            dy = lowestY - highestY;
+
+        return {
+            bound1: new Vector(lowestX, lowestY),
+            bound2: new Vector(highestX, highestY),
+            width: Math.sqrt(dx * dx),
+            height: Math.sqrt(dy * dy)
+        };
+    }
+
+    getCenter(center) {
+        if (center === undefined) {
+            center = new Vector(this.width / 2, this.height / 2);
+        }
+        switch (center) {
+            case Shape.TOPLEFT:
+                center = new Vector(this.bound1.x, this.bound1.y);
+                break;
+            case Shape.TOPCENTER:
+                center = new Vector(this.width / 2, this.bound1.y);
+                break;
+            case Shape.TOPRIGHT:
+                center = new Vector(this.bound2.x, this.bound1.y);
+                break;
+            case Shape.CENTERLEFT:
+                center = new Vector(this.bound1.x, this.height / 2);
+                break;
+            case Shape.CENTERCENTER:
+                center = new Vector(this.width / 2, this.height / 2);
+                break;
+            case Shape.CENTERRIGHT:
+                center = new Vector(this.bound2.x, this.height / 2);
+                break;
+            case Shape.BOTTOMLEFT:
+                center = new Vector(this.bound1.x, this.bound2.y);
+                break;
+            case Shape.BOTTOMCENTER:
+                center = new Vector(this.width / 2, this.bound2.y);
+                break;
+            case Shape.BOTTOMRIGHT:
+                center = new Vector(this.bound2.x, this.bound2.y);
+                break;
+        }
+        return center;
+    }
+
+    update() {
+        this.initialize();
+        this.draw();
+    }
+
+    drawBoundingBox() {
+        let drawBound1, drawBound2;
+        if (this.subtractCenter) {
+            drawBound1 = Vector.subtract(Vector.add(this.bound1, this.position), this.center);
+            drawBound2 = Vector.subtract(Vector.add(this.bound2, this.position), this.center);
+        } else {
+            drawBound1 = Vector.add(this.bound1, this.position);
+            drawBound2 = Vector.add(this.bound2, this.position);
+        }
+
+        context.beginPath();
+        context.lineWidth = 1;
+        context.strokeStyle = 'red';
+        context.setLineDash([]);
+        context.moveTo(drawBound1.x, drawBound1.y);
+        context.lineTo(drawBound2.x, drawBound1.y);
+        context.lineTo(drawBound2.x, drawBound2.y);
+        context.lineTo(drawBound1.x, drawBound2.y);
+        context.closePath();
+        context.stroke();
+    }
+
+    setFill(fill) {
+        this.fill = fill;
+    }
+
+    drawCenter() {
+
+        context.beginPath();
+        context.lineWidth = 1;
+        context.strokeStyle = 'red';
+        context.setLineDash([]);
+        context.arc(this.position.x, this.position.y, 5, 0, Math.PI * 2, false);
+        context.closePath();
+        context.strokeStyle = 'red';
+        context.stroke();
+    }
+
+    drawAbsoluteCenter() {
+        let drawAbsoluteCenter;
+        if (this.subtractCenter) {
+            drawAbsoluteCenter = Vector.subtract(
+                Vector.subtract(
+                    Vector.add(this.bound2, this.position),
+                    this.center
+                ),
+                this.absoluteCenter
+            );
+        } else {
+            drawAbsoluteCenter = Vector.subtract(
+                Vector.add(this.bound2, this.position),
+                this.absoluteCenter
+            );
+        }
+        context.beginPath();
+        context.lineWidth = 1;
+        context.strokeStyle = 'red';
+        context.setLineDash([]);
+        context.moveTo(drawAbsoluteCenter.x-5, drawAbsoluteCenter.y);
+        context.lineTo(drawAbsoluteCenter.x+5, drawAbsoluteCenter.y);
+        context.moveTo(drawAbsoluteCenter.x, drawAbsoluteCenter.y-5);
+        context.lineTo(drawAbsoluteCenter.x, drawAbsoluteCenter.y+5);
+        context.stroke();
+    }
+
+    start() {
+        let realPos = Vector.add(this.position, this.offset);
+        context.save();
+        context.translate(realPos.x, realPos.y);
+        context.rotate(this.angle * Math.PI/180);
+        context.translate(realPos.x * -1, realPos.y * -1);
+    }
+
+    end() {
+        context.restore();
+    }
+
+    setOffset(offset) {
+        this.offset = offset;
+    }
+
+    drawPoints() {
+        this.points.map(point => {
+            let pos;
+            if (this.subtractCenter) {
+                pos = Vector.subtract(Vector.add(point, this.position), this.center);
+            } else {
+                pos = Vector.add(point, this.position);
+            }
+            let radius = this.cornerRoundness / 2;
+            if (radius < 5) {
+                radius = 5;
+            }
+            context.beginPath();
+            context.lineWidth = 1;
+            context.strokeStyle = 'red';
+            context.setLineDash([]);
+            context.arc(pos.x, pos.y, radius, 0, Math.PI * 2, false);
+            context.closePath();
+            context.stroke();
+        });
+    }
+
+    drawShape() {
+        context.beginPath();
+        context.lineJoin = 'round';
+        context.lineWidth = this.cornerRoundness;
+        context.fillStyle = this.color;
+        context.strokeStyle = this.color;
+        context.setLineDash([]);
+        this.points.map((point, index) => {
+            let pos;
+            if (this.subtractCenter) {
+                pos = Vector.add(Vector.subtract(Vector.add(point, this.position), this.center), this.offset);
+            } else {
+                pos = Vector.add(Vector.add(point, this.position), this.offset);
+            }
+            if (index === 0) {
+                context.moveTo(pos.x, pos.y);
+            } else {
+                context.lineTo(pos.x, pos.y);
+            }
+            return pos;
+        });
+        context.closePath();
+        context.fill();
+        context.stroke();
+    }
+
+    drawFill() {
+        context.clip();
+        context.drawImage(
+            offscreenContext.canvas,
+            0, 0,
+            offscreenCanvas.width,
+            offscreenCanvas.height
+        );
+    }
+
+    draw() {
+        this.start();
+        this.drawShape();
+        if (this.fill !== undefined) {
+            this.drawFill();
+        }
+        if (this.debug) {
+            this.drawBoundingBox();
+            this.drawCenter();
+            this.drawPoints();
+            this.drawAbsoluteCenter();
+        }
+        this.end();
+    }
+}
+
+Shape.TOPLEFT = 'topleft';
+Shape.TOPCENTER = 'topcenter';
+Shape.TOPRIGHT = 'topright';
+Shape.CENTERLEFT = 'centerleft';
+Shape.CENTERCENTER = 'centercenter';
+Shape.CENTERRIGHT = 'centerright';
+Shape.BOTTOMLEFT = 'bottomleft';
+Shape.BOTTOMCENTER = 'bottomcenter';
+Shape.BOTTOMRIGHT = 'bottomright';
+
+// Tower
+
+'use strict';
+
+class Tower {
+
+    constructor() {
+        this.windowAlpha = 1;
+    }
+
+    initialize(points, scaleX, scaleY, base, debug) {
+        this.points = points;
+
+        this.base = base;
+        this.scaleX = scaleX;
+        this.scaleY = scaleY;
+
+        this.offset = new Vector(0, 0);
+
+        this.points.map(point => {
+            point.to.map(to => {
+                to.multiplyX(scaleX).multiplyY(scaleY);
+            });
+            let locX = point.location.x *= -1;
+            let locY = point.location.y *= -1;
+            point.location.x = (locX * scaleX) * -1;
+            point.location.y = (locY * scaleY) * -1;
+            point.location.add(this.base);
+        });
+
+        this.shapes = [];
+        this.animations = [];
+        for (let key in this.points) {
+            if (this.points.hasOwnProperty(key)) {
+                let from = [];
+                for (let fromKey in this.points[key].to) {
+                    from.push(new Vector(0, 0));
+                }
+                this.shapes.push(
+                    new Shape(
+                        from,
+                        this.points[key].location,
+                        this.points[key].center,
+                        this.points[key].angle === undefined ? 0 : this.points[key].angle,
+                        this.points[key].cornerRoundness === undefined ? 5 : this.points[key].cornerRoundness,
+                        this.points[key].color === undefined ? 'rgba(0, 0, 0, 1)' : this.points[key].color,
+                        debug
+                    )
+                );
+                for (let fromKey in this.points[key].to) {
+                    this.animations.push({
+                        animation: new AnimationShapePoints(
+                            from[fromKey],
+                            this.points[key].to[fromKey],
+                            this.shapes[key],
+                            AnimationShapePoints.getCenter(
+                                this.shapes[key].initialCenter,
+                                AnimationShapePoints.getSize(this.points[key].to)
+                            ),
+                            this.points[key].bounce !== undefined ?
+                                this.points[key].bounce : 1
+                            ,
+                            this.points[key].immediate !== undefined ?
+                                this.points[key].immediate[fromKey] : false
+                        ),
+                        run: parseInt(key)
+                    });
+                }
+            }
+        }
+
+        this.run = 0;
+        this.start = false;
+    }
+
+    getBase() {
+        return this.base;
+    }
+
+    getScaleX() {
+        return this.scaleX;
+    }
+
+    getScaleY() {
+        return this.scaleY;
+    }
+
+    setWindowAlpha(windowAlpha) {
+        this.windowAlpha = windowAlpha;
+    }
+
+    updateOffset(offset) {
+        this.offset = offset;
+        this.shapes.map(shape => {
+            shape.setOffset(offset);
+        });
+    }
+
+    updateBase(base) {
+        this.base = base;
+        this.points.map(point => {
+            point.location.x = base.x;
+            point.location.y = base.y;
+        });
+    }
+
+    update(callback) {
+        if (this.start) {
+            this.shapes.map(shape => {
+                shape.update()
+            });
+            this.animations.map((animation, index) => {
+                if (animation.run === this.run) {
+                    animation.animation.update(() => {
+                        this.run++;
+                        if (callback !== undefined) {
+                            callback();
+                        }
+                    });
+                }
+            });
+        }
+    }
+
+    getRandomBetween(min, max) {
+        return Math.floor(min + Math.random()*(max+1 - min));
+    }
+}
+
+// Triangle
+
+'use strict';
+
+class Triangle extends Tower {
+
+    constructor(base, scaleX, scaleY, width, height, angle, cornerRoundness, color) {
+        super();
+
+        this.width = width;
+        this.height = height;
+        this.angle = angle;
+        this.cornerRoundness = cornerRoundness;
+
+        this.initialize(
+            [
+                {
+                    to: [
+                        new Vector(width / 2, 0),
+                        new Vector(width, height),
+                        new Vector(0, height)
+                    ],
+                    location: new Vector(0, 0),
+                    center: Shape.BOTTOMCENTER,
+                    color: color,
+                    angle: angle,
+                    cornerRoundness: cornerRoundness,
+                    immediate: [ false, true, true ]
+                }
+            ],
+            scaleX,
+            scaleY,
+            base
+        );
+    }
+
+    setFill(fill) {
+        this.shapes.map(shape => {
+            shape.setFill(fill);
+        });
+    }
+
+    getWidth() {
+        return this.width;
+    }
+
+    getHeight() {
+        return this.height;
+    }
+
+    getAngle() {
+        return this.angle;
+    }
+
+    getCornerRoundness() {
+        return this.cornerRoundness;
+    }
+
+    static create(
+        base,
+        scaleX = 10,
+        scaleY = 10,
+        width = 2,
+        height = 1,
+        angle = 0,
+        cornerRoundness = 5,
+        color = 'rgba(0, 0, 0, 1)'
+    ) {
+        return new Triangle(base, scaleX, scaleY, width, height, angle, cornerRoundness, color);
+    }
+}
+
+// Prominent Tower
+
+'use strict';
+
+class ProminentTower extends Tower
+{
+    constructor(base, scaleX, scaleY, height, color) {
+
+        super();
+
+        let heightCentralPillar = height * .6;
+        let heightToPart = height * .4;
+
+        // Subtract base elements
+        heightCentralPillar -= 5;
+
+        let points = [
+            {
+                to: [
+                    new Vector(0, 0),
+                    new Vector(12, 0),
+                    new Vector(12, 3),
+                    new Vector(0, 3)
+                ],
+                location: new Vector(0, 0),
+                center: Shape.BOTTOMCENTER,
+                color: color
+            },
+            {
+                to: [
+                    new Vector(2, 0),
+                    new Vector(10, 0),
+                    new Vector(12, 2),
+                    new Vector(0, 2)
+                ],
+                immediate: [ false, false, true, true ],
+                location: new Vector(0, -3),
+                center: Shape.BOTTOMCENTER,
+                color: color
+            },
+            {
+                to: [
+                    new Vector(2, 0),
+                    new Vector(6, 0),
+                    new Vector(8, heightCentralPillar),
+                    new Vector(0, heightCentralPillar)
+                ],
+                immediate: [ false, false, true, true ],
+                location: new Vector(0, -5),
+                center: Shape.BOTTOMCENTER,
+                color: color
+            },
+            {
+                to: [
+                    new Vector(3.5, 0),
+                    new Vector(7, heightToPart * .5),
+                    new Vector(7, heightToPart * .9),
+                    new Vector(5.5, heightToPart),
+                    new Vector(1.5, heightToPart),
+                    new Vector(0, heightToPart * .9),
+                    new Vector(0, heightToPart * .5)
+                ],
+                immediate: [ false, false, false, true ,true, false, false ],
+                location: new Vector(0, (heightCentralPillar + 5) * -1),
+                center: Shape.BOTTOMCENTER,
+                bounce: 1.2,
+                color: color
+            },
+            {
+                to: [
+                    new Vector(0, 0),
+                    new Vector(1, 0),
+                    new Vector(1, heightToPart * .2),
+                    new Vector(0, heightToPart * .2)
+                ],
+                immediate: [ false, false, true, true ],
+                location: new Vector(-2, (heightCentralPillar + 7) * -1),
+                center: Shape.BOTTOMCENTER,
+                color: 'rgba(255, 69, 0, ' + this.windowAlpha.toString() + ')'
+            },
+            {
+                to: [
+                    new Vector(0, 0),
+                    new Vector(1, 0),
+                    new Vector(1, heightToPart * .2),
+                    new Vector(0, heightToPart * .2)
+                ],
+                immediate: [ false, false, true, true ],
+                location: new Vector(2, (heightCentralPillar + 7) * -1),
+                center: Shape.BOTTOMCENTER,
+                color: 'rgba(255, 69, 0, ' + this.windowAlpha.toString() + ')'
+            }
+        ];
+
+        this.initialize(
+            points,
+            scaleX,
+            scaleY,
+            base
+        );
+    }
+
+    static create(base, scaleX = 10, scaleY = 10, height = 40, color = 'rgba(0, 0, 0, 1)') {
+        return new ProminentTower(base, scaleX, scaleY, height, color);
+    }
+}
+
+// Spike
+
+'use strict';
+
+class Spike extends Tower {
+
+    constructor(base, scaleX, scaleY, height, angle, color) {
+
+        super();
+
+        scaleX = scaleX === undefined ? this.getRandomBetween(10, 20) : scaleX;
+        scaleY = scaleY === undefined ? this.getRandomBetween(10, 20) : scaleY;
+        angle = angle === undefined ? this.getRandomBetween(-5, 5) : angle;
+        color = color === undefined ? 'rgba(0, 0, 0, 1)' : color;
+
+        this.initialize(
+            [
+                {
+                    to: [
+                        new Vector(0, 0),
+                        new Vector(4, 0),
+                        new Vector(4, 1),
+                        new Vector(0, 1)
+                    ],
+                    location: new Vector(0, 0),
+                    center: Shape.BOTTOMCENTER,
+                    cornerRoundness: 0,
+                    color: color
+                },
+                {
+                    to: [
+                        new Vector(1, 0),
+                        new Vector(3, 0),
+                        new Vector(4, 1),
+                        new Vector(0, 1)
+                    ],
+                    immediate: [ false, false, true, true ],
+                    location: new Vector(0, -1),
+                    center: Shape.BOTTOMCENTER,
+                    cornerRoundness: 0,
+                    color: color
+                },
+                {
+                    to: [
+                        new Vector(1, 0),
+                        new Vector(2, height),
+                        new Vector(0, height),
+                    ],
+                    immediate: [ false, true, true ],
+                    location: new Vector(0, -2),
+                    center: Shape.BOTTOMCENTER,
+                    bounce: 1.5,
+                    angle: angle,
+                    cornerRoundness: 0,
+                    color: color
+                }
+            ],
+            scaleX,
+            scaleY,
+            base
+        );
+
+        this.start = true;
+    }
+
+    static create(base, scaleX, scaleY, height, angle, color) {
+
+        return new Spike(base, scaleX, scaleY, height, angle, color);
+    }
+}
+
+// Roof1
+
+'use strict';
+
+class Roof1 extends Tower {
+
+    constructor(base, scaleX, scaleY, width, height, color) {
+
+        super();
+
+        this.width = width;
+        this.height = height;
+        this.color = color;
+
+        this.angle = 0;
+
+        let weirdElementWidth = this.width / 4;
+        let weirdElementHeight = this.height / 6;
+
+        this.initialize(
+            [
+                {
+                    to: [
+                        new Vector(1, 0),
+                        new Vector(2, height),
+                        new Vector(0, height)
+                    ],
+                    immediate: [ false, true, true ],
+                    location: new Vector((this.width / 2) * -1, 0),
+                    center: Shape.BOTTOMCENTER,
+                    color: color,
+                    cornerRoundness: 2
+                },
+                {
+                    to: [
+                        new Vector(1, 0),
+                        new Vector(2, height),
+                        new Vector(0, height)
+                    ],
+                    immediate: [ false, true, true ],
+                    location: new Vector(this.width / 2, 0),
+                    center: Shape.BOTTOMCENTER,
+                    color: color,
+                    cornerRoundness: 2
+                },
+                ...this.makeHorizontalElements(),
+                {
+                    to: [
+                        new Vector(weirdElementWidth * .5, 0),
+                        new Vector(weirdElementWidth, weirdElementHeight * .2),
+                        new Vector(weirdElementWidth, weirdElementHeight * .8),
+                        new Vector(weirdElementWidth * .5, weirdElementHeight),
+                        new Vector(0, weirdElementHeight * .8),
+                        new Vector(0, weirdElementHeight * .2)
+                    ],
+                    location: new Vector(0, ((this.height / 4) * 3) * -1),
+                    center: Shape.CENTERCENTER,
+                    angle: this.getRandomBetween(-10, 10),
+                    color: color,
+                    cornerRoundness: 2
+                },
+                {
+                    to: [
+                        new Vector(0, 0),
+                        new Vector(weirdElementWidth * .5, 0),
+                        new Vector(weirdElementWidth * .5, weirdElementHeight * .4),
+                        new Vector(0, weirdElementHeight * .4)
+                    ],
+                    location: new Vector(0, ((this.height / 4) * 3) * -1),
+                    center: Shape.CENTERCENTER,
+                    angle: this.getRandomBetween(-10, 10),
+                    color: 'rgba(255, 69, 0, ' + this.windowAlpha.toString() + ')',
+                    cornerRoundness: 2
+                }
+            ],
+            scaleX,
+            scaleY,
+            base
+        );
+
+        this.start = true;
+    }
+
+    makeHorizontalElements() {
+
+        let elements = [];
+        let totalHeight = (this.height / 2);
+        let distance = (this.height / 10);
+        let i = 0;
+
+        let x = this.width / 2;
+
+        while (totalHeight < (this.height - distance)) {
+            if (i > 0) {
+                totalHeight += distance;
+            }
+            elements.push(
+                {
+                    to: [
+                        new Vector(0, 0),
+                        new Vector(this.width, 0),
+                        new Vector(this.width, .2),
+                        new Vector(0, .2)
+                    ],
+                    location: new Vector(i%2 === 0 ? x * -1 : x, totalHeight * -1),
+                    center: i%2 === 0 ? Shape.CENTERLEFT : Shape.CENTERRIGHT,
+                    angle: this.getRandomBetween(-4, 4),
+                    color: this.color,
+                    cornerRoundness: 2
+                }
+            );
+            i++;
+        }
+
+        return elements;
+    }
+
+    static create(
+        base,
+        scaleX = 10,
+        scaleY = 10,
+        width = 10,
+        height = 25,
+        color = 'rgba(0, 0, 0, 1)'
+    ) {
+        return new Roof1(base, scaleX, scaleY, width, height, color);
+    }
+}
+
+// Roof2
+
+'use strict';
+
+class Roof2 extends Tower {
+
+    constructor(base, color) {
+        super();
+
+        this.color = color;
+
+        this.initialize(
+            [
+                {
+                    to: [
+                        new Vector(1, 0),
+                        new Vector(4, 20),
+                        new Vector(0, 20)
+                    ],
+                    location: new Vector(0, 0),
+                    center: Shape.BOTTOMCENTER,
+                    color: this.color,
+                    cornerRoundness: 2
+                },
+                {
+                    to: [
+                        new Vector(1, 0),
+                        new Vector(2, 15),
+                        new Vector(0, 15)
+                    ],
+                    location: new Vector(-10, 0),
+                    center: Shape.BOTTOMCENTER,
+                    color: this.color,
+                    cornerRoundness: 2
+                },
+                {
+                    to: [
+                        new Vector(1, 0),
+                        new Vector(2, 15),
+                        new Vector(0, 15)
+                    ],
+                    location: new Vector(10, 0),
+                    center: Shape.BOTTOMCENTER,
+                    color: this.color,
+                    cornerRoundness: 2
+                },
+                // Horizontal
+                ...this.makeHorizontalElements()
+            ],
+            this.getRandomBetween(5, 10),
+            this.getRandomBetween(5, 10),
+            base
+        );
+
+        this.start = true;
+    }
+
+    makeHorizontalElements() {
+        return [
+            {
+                to: [
+                    new Vector(0, 0),
+                    new Vector(12, 0),
+                    new Vector(12, .1),
+                    new Vector(0, .1)
+                ],
+                location: new Vector(-10, -10),
+                center: Shape.CENTERLEFT,
+                angle: Math.random() * 10,
+                color: this.color,
+                cornerRoundness: 2
+            },
+            {
+                to: [
+                    new Vector(0, 0),
+                    new Vector(12, 0),
+                    new Vector(12, .1),
+                    new Vector(0, .1)
+                ],
+                location: new Vector(10, -10),
+                center: Shape.CENTERRIGHT,
+                angle: (Math.random() * 10) * -1,
+                color: this.color,
+                cornerRoundness: 2
+            },
+            {
+                to: [
+                    new Vector(0, 0),
+                    new Vector(12, 0),
+                    new Vector(12, .1),
+                    new Vector(0, .1)
+                ],
+                location: new Vector(-10, -8),
+                center: Shape.CENTERLEFT,
+                angle: Math.random() * 10,
+                color: this.color,
+                cornerRoundness: 2
+            },
+            {
+                to: [
+                    new Vector(0, 0),
+                    new Vector(12, 0),
+                    new Vector(12, .1),
+                    new Vector(0, .1)
+                ],
+                location: new Vector(10, -8),
+                center: Shape.CENTERRIGHT,
+                angle: (Math.random() * 10) * -1,
+                color: this.color,
+                cornerRoundness: 2
+            },
+            {
+                to: [
+                    new Vector(0, 0),
+                    new Vector(12, 0),
+                    new Vector(12, .1),
+                    new Vector(0, .1)
+                ],
+                location: new Vector(-10, -6),
+                center: Shape.CENTERLEFT,
+                angle: Math.random() * 10,
+                color: this.color,
+                cornerRoundness: 2
+            },
+            {
+                to: [
+                    new Vector(0, 0),
+                    new Vector(12, 0),
+                    new Vector(12, .1),
+                    new Vector(0, .1)
+                ],
+                location: new Vector(10, -6),
+                center: Shape.CENTERRIGHT,
+                angle: (Math.random() * 10) * -1,
+                color: this.color,
+                cornerRoundness: 2
+            }
+        ];
+    }
+
+    static create(base, color) {
+        return new Roof2(base, color);
+    }
+}
+
+// Pillar
+
+'use strict';
+
+class Pillar extends Tower {
+
+    constructor(base, scaleX, scaleY, height, color) {
+
+        super();
+
+        this.initialize(
+            [
+                {
+                    to: [
+                        new Vector(0, 0),
+                        new Vector(5, 0),
+                        new Vector(5, 5),
+                        new Vector(0, 5)
+                    ],
+                    location: new Vector(0, 0),
+                    center: Shape.BOTTOMCENTER,
+                    color: color
+                },
+                {
+                    to: [
+                        new Vector(1.5, 0),
+                        new Vector(3.5, 0),
+                        new Vector(5, 2),
+                        new Vector(0, 2)
+                    ],
+                    immediate: [ false, false, true, true ],
+                    location: new Vector(0, -5),
+                    center: Shape.BOTTOMCENTER,
+                    color: color
+                },
+                {
+                    to: [
+                        new Vector(1, 0),
+                        new Vector(2, 1),
+                        new Vector(2, 7),
+                        new Vector(0, 7),
+                        new Vector(0, 1)
+                    ],
+                    immediate: [false, false, true, true, false],
+                    location: new Vector(0, -7),
+                    center: Shape.BOTTOMCENTER,
+                    color: color
+                },
+                // Decoration
+                {
+                    to: [
+                        new Vector(1, 0),
+                        new Vector(5, 0),
+                        new Vector(6, 1),
+                        new Vector(0, 1)
+                    ],
+                    location: new Vector(0, -3),
+                    center: Shape.CENTERCENTER,
+                    angle: this.getRandomBetween(-5, 5),
+                    color: color
+                },
+                {
+                    to: [
+                        new Vector(1, 0),
+                        new Vector(5, 0),
+                        new Vector(6, 1),
+                        new Vector(0, 1)
+                    ],
+                    location: new Vector(0, -4),
+                    center: Shape.CENTERCENTER,
+                    angle: this.getRandomBetween(-5, 5),
+                    color: color
+                },
+                {
+                    to: [
+                        new Vector(1, 0),
+                        new Vector(2, 0),
+                        new Vector(3, 1),
+                        new Vector(0, 1)
+                    ],
+                    location: new Vector(0, -12),
+                    center: Shape.CENTERCENTER,
+                    angle: this.getRandomBetween(-5, 5),
+                    color: color
+                },
+                {
+                    to: [
+                        new Vector(1, 0),
+                        new Vector(2, 0),
+                        new Vector(3, 1),
+                        new Vector(0, 1)
+                    ],
+                    location: new Vector(0, -11),
+                    center: Shape.CENTERCENTER,
+                    color: color
+                },
+                {
+                    to: [
+                        new Vector(1, 0),
+                        new Vector(2, 0),
+                        new Vector(3, 1),
+                        new Vector(0, 1)
+                    ],
+                    location: new Vector(0, -10),
+                    center: Shape.CENTERCENTER,
+                    color: color
+                },
+            ],
+            scaleX,
+            scaleY,
+            base
+        );
+
+        this.start = true;
+    }
+
+    static create(
+        base,
+        scaleX = 10,
+        scaleY = 10,
+        height = 10,
+        color = 'rgba(0, 0, 0, 1)'
+    ) {
+        return new Pillar(base, scaleX, scaleY, height, color);
+    }
+}
+
+// Pillar2
+
+'use strict';
+
+class Pillar2 extends Tower {
+
+    constructor(base, scaleX, scaleY, height, blockWidth, blockHeight, color) {
+
+        super();
+
+        this.counter = 0;
+        this.height = height;
+
+        let blocks = [];
+        let totalHeight = 0;
+        let i = 0;
+        while (totalHeight < (height - blockHeight)) {
+            if (i > 0) {
+                totalHeight += blockHeight;
+            }
+            blocks.push(
+                {
+                    to: [ new Vector(0, 0), new Vector(blockWidth, 0), new Vector(blockWidth, blockHeight), new Vector(0, blockHeight) ],
+                    immediate: [ false, false, true, true ],
+                    location: new Vector(0, (i * blockHeight) * -1),
+                    center: Shape.BOTTOMCENTER,
+                    color: color
+                }
+            );
+            if (Math.random() < 0.2) {
+                blocks.push({
+                    to: [ new Vector(0, 0), new Vector(blockWidth * .2, 0), new Vector(blockWidth * .2, blockHeight * .2), new Vector(0, blockHeight * .2) ],
+                    immediate: [ false, false, true, true ],
+                    location: new Vector(0, ((i * blockHeight) + (blockHeight * .4)) * -1),
+                    center: Shape.BOTTOMCENTER,
+                    color: 'rgba(255, 69, 0, ' + this.windowAlpha.toString() + ')'
+                });
+            }
+            i++;
+        }
+
+        this.initialize(
+            blocks,
+            scaleX,
+            scaleY,
+            base
+        );
+    }
+
+    setFill(fill) {
+        this.shapes.map(shape => {
+            shape.setFill(fill);
+        });
+    }
+
+    update(callback) {
+        super.update(() => {
+            this.counter += 1;
+            if (callback !== undefined && this.counter === this.points.length) {
+                callback();
+            }
+        })
+    }
+
+    getHeight() {
+        return this.height;
+    }
+
+    static create(
+        base,
+        scaleX = 10,
+        scaleY = 10,
+        height = 30,
+        blockWidth = 2,
+        blockHeight = 2,
+        color = 'rgba(0, 0, 0, 1)'
+    ) {
+        return new Pillar2(base, scaleX, scaleY, height, blockWidth, blockHeight, color);
+    }
+}
+
+// Pillar3
+
+'use strict';
+
+class Pillar3 extends Tower {
+
+    constructor(base, scaleX, scaleY, height, color) {
+        super();
+        this.counter = 0;
+
+        scaleX = scaleX === undefined ? getRandomBetween(10, 10) : scaleX;
+        scaleY = scaleY === undefined ? getRandomBetween(10, 10) : scaleY;
+        color = color === undefined ? 'rgba(0, 0, 0, 1)' : color;
+        height = height === undefined ? 30 : height;
+
+        let blockHeight = 4;
+        let blocks = [];
+        let totalHeight = 0;
+        let i = 0;
+        while (totalHeight < height) {
+            if (i > 0) {
+                totalHeight += (blockHeight - 1);
+            }
+            blocks.push(
+                {
+                    to: [
+                        new Vector(.5, 0),
+                        new Vector(1, .5),
+                        new Vector(1, 4),
+                        new Vector(0, 4),
+                        new Vector(0, .5)
+                    ],
+                    location: new Vector(0, totalHeight * -1),
+                    center: Shape.BOTTOMCENTER,
+                    color: color
+                }
+            );
+            i++;
+        }
+
+
+        this.initialize(
+            blocks,
+            scaleX,
+            scaleY,
+            base
+        );
+    }
+
+    update(callback) {
+        super.update(() => {
+            this.counter += 1;
+            if (callback !== undefined && this.counter === this.points.length) {
+                callback();
+            }
+        })
+    }
+
+    static create(base, scaleX, scaleY, height, color) {
+        return new Pillar3(base, scaleX, scaleY, height, color);
+    }
+}
+
+// Trap
+
+'use strict';
+
+class Trap extends Tower {
+
+    constructor(base, scaleX, scaleY, baseAngle, height, between, color, miss, wiggle) {
+        super();
+
+        scaleX = scaleX === undefined ? this.getRandomBetween(10, 10) : scaleX;
+        scaleY = scaleY === undefined ? this.getRandomBetween(10, 10) : scaleY;
+        color = color === undefined ? 'rgba(0, 0, 0, 1)' : color;
+        height = height === undefined ? 30 : height;
+        between = between === undefined ? 3 : between;
+        miss = miss === undefined ? false : miss;
+
+        let blockHeight = between + 1;
+        let elements = [];
+        let totalHeight = 0;
+        let i = 0;
+
+        while(totalHeight < height) {
+            totalHeight += blockHeight;
+            let draw = true;
+
+            if (miss) {
+                if (Math.random() < 0.2) {
+                    draw = false;
+                }
+            }
+
+            if (draw) {
+                elements.push({
+                    to: [
+                        new Vector(0, 0),
+                        new Vector(7, 0),
+                        new Vector(7, 1),
+                        new Vector(0, 1)
+                    ],
+                    location: new Vector(0, (i * between) * -1),
+                    center: Shape.BOTTOMCENTER,
+                    angle: baseAngle + (wiggle === true ? getRandomBetween(-5, 5) : 0),
+                    immediate: [false, true, true, false],
+                    color: color
+                });
+            }
+            i++;
+        }
+
+        this.initialize(
+            elements,
+            scaleX,
+            scaleY,
+            base
+        );
+    }
+
+    setFill(fill) {
+        this.shapes.map(shape => {
+            shape.setFill(fill);
+        });
+    }
+
+    static create(base, scaleX, scaleY, baseAngle, height, between, color, miss, wiggle) {
+        return new Trap(base, scaleX, scaleY, baseAngle, height, between, color, miss, wiggle);
+    }
+}
+
+// FrontWall
+
+'use strict';
+
+class FrontWall {
+
+    constructor(base, scaleX, scaleY, height, color) {
+        let pillar21X = Vector.subtract(base, new Vector(7 * scaleX, 0));
+        let pillar22X = Vector.add(base, new Vector(7 * scaleX, 0));
+        let trap1 = Vector.subtract(base, new Vector(3 * scaleX, 5 * scaleY));
+        let trap2 = Vector.add(base, new Vector(3 * scaleX, (5 * scaleY) * -1));
+
+        this.elements = [
+            Pillar2.create(pillar21X, scaleX, scaleY, height - (height / 10), 2, 2, color),
+            Pillar2.create(pillar22X, scaleX, scaleY, height - (height / 10), 2, 2, color),
+            Pillar3.create(base, scaleX, scaleY, height, color),
+            Trap.create(trap1, scaleX, scaleY, -21, height, 3, color, true),
+            Trap.create(trap2, scaleX, scaleY, 21, height, 3, color, true)
+        ];
+
+        this.elements[0].start = true;
+        this.elements[1].start = true;
+        this.elements[2].start = true;
+    }
+
+    update() {
+        this.elements.map((element, index) => {
+            element.update(() => {
+                if (index === 2) {
+                    this.elements[3].start = true;
+                    this.elements[4].start = true;
+                }
+            });
+        });
+    }
+
+    updateOffset(offset) {
+        this.elements.map(element => {
+            element.updateOffset(offset);
+        });
+    }
+
+    static create(
+        base,
+        scaleX = 10,
+        scaleY = 10,
+        height = 30,
+        color = 'rgba(0, 0, 0, 1)'
+    ) {
+        return new FrontWall(base, scaleX, scaleY, height, color);
+    }
+}
+
+// Layer
+
+'use strict';
+
+class Layer {
+
+    constructor(
+        layers,
+        layer,
+        color,
+        elements,
+        pattern,
+        debug
+    ) {
+
+        this.layers = layers;
+        this.layer = layer;
+        this.color = color;
+        this.elements = elements;
+        this.pattern = pattern;
+
+        this.getLayerPositions();
+        this.counter = 0;
+        this.positionerX = 0;
+        this.debug = debug;
+
+        this.initialStart = this.layers.getLayerStart(this.layer);
+
+        let opposite = (this.height + (this.add / 2)) - (canvas.height - this.start.y);
+        let adjacent = this.width / 2;
+        this.objects = [];
+        this.objectPositions = [];
+
+        this.objectCount = this.width / 10;
+        this.timer = 300;
+        this.angle = Math.atan(opposite/adjacent);
+        this.position = false;
+        this.runTimer = true;
+        this.createTimeout(Math.random() * this.timer);
+    }
+
+    getLayerPositions() {
+        this.width = this.layers.getLayerWidth(this.layer);
+        this.height = this.layers.getHighestLayerHeight();
+        this.add = this.layers.getHighestLayerWidth();
+        this.start = this.layers.getLayerStart(this.layer);
+        this.end = this.layers.getLayerEnd(this.layer);
+    }
+
+    createTimeout(time) {
+        if (this.runTimer) {
+            setTimeout(() => {
+                this.position = true;
+                this.createTimeout(Math.random() * this.timer);
+            }, time);
+        }
+    }
+
+    getOpposite(from) {
+        return from * Math.tan(this.angle);
+    }
+
+    createObject() {
+        if (this.objects.length < this.objectCount) {
+            let endY = this.getOpposite(this.positionerX);
+            if (this.positionerX > this.width / 2) {
+                endY = this.getOpposite(this.positionerX - this.width) * -1;
+            }
+            let random = this.layer * 2;
+            let positionerY = getRandomBetween(random * -1, random);
+
+            let offset = Vector.subtract(this.initialStart, this.start);
+
+            let start = new Vector(this.positionerX + this.start.x, this.start.y + positionerY);
+            start.add(offset);
+            let end =  new Vector(this.positionerX + this.start.x, this.start.y - endY + positionerY);
+            end.add(offset);
+            this.objectPositions.push(start);
+
+            let object = this.createElement( start, end, endY, 10, 10 );
+            this.objects.push({
+                positionerX: this.positionerX,
+                positionerY: positionerY,
+                start: start,
+                end: end,
+                object: object
+            });
+            this.objects.sort((a, b) => {
+                if (a.positionerY < b.positionerY) {  return -1; }
+                if (a.positionerY > b.positionerY) { return 1; }
+                return 0;
+            });
+        } else {
+            this.runTimer = false;
+        }
+    }
+
+    createElement(start, end, endY, scaleX, scaleY) {
+        let selector = Math.floor(Math.random() * this.elements.length);
+        switch (this.elements[selector]) {
+            case 'Spike':
+                let spike = Spike.create(start, 10, 10, (endY / 10) + (Math.random() * 10), 0, this.color);
+                spike.setWindowAlpha(Math.floor(this.layer / 10));
+                return spike;
+                break;
+            case 'Roof1':
+                let roof1 = Roof1.create(start, 10, 10, 10, (endY / 10), this.color);
+                roof1.setWindowAlpha(Math.floor(this.layer / 10));
+                return roof1;
+                break;
+            case 'Roof2':
+                let roof2 = Roof2.create(start, this.color);
+                roof2.setWindowAlpha(Math.floor(this.layer / 10));
+                return roof2;
+                break;
+            case 'Pillar':
+                let pillar = Pillar.create(start, 10, 10, undefined, this.color);
+                pillar.setWindowAlpha(Math.floor(this.layer / 10));
+                return pillar;
+                break;
+            case 'Pillar2':
+                let pillar2 = Pillar2.create(start, 10, 10, (endY / 10) + (Math.random() * 10), 1, 1, this.color);
+                pillar2.start = true;
+                pillar2.setWindowAlpha(Math.floor(this.layer / 10));
+                return pillar2;
+                break;
+            case 'Pillar3':
+                let pillar3 = Pillar3.create(start, 10, 10, (endY / 10) + (Math.random() * 10), this.color);
+                pillar3.start = true;
+                pillar3.setWindowAlpha(Math.floor(this.layer / 10));
+                return pillar3;
+                break;
+            case 'ProminentTower':
+                let prominentTower = ProminentTower.create(start, 10, 10, (endY / 10) + (Math.random() * 10), this.color);
+                prominentTower.start = true;
+                prominentTower.setWindowAlpha(Math.floor(this.layer / 10));
+                return prominentTower;
+                break;
+            case 'MainGate':
+                let mainGate = MainGate.create(start, 10, 10, 12, 24, this.color);
+                // mainGate.setFill(this.pattern);
+                // mainGate.start = true;
+                mainGate.setWindowAlpha(Math.floor(this.layer / 10));
+                let index = this.elements.indexOf('MainGate');
+                this.elements.splice(index, 1);
+                return mainGate;
+                break;
+            case 'FrontWall':
+                let frontWall = FrontWall.create(start, 10, 10, (endY / 10) + (Math.random() * 10), this.color);
+                frontWall.start = true;
+                return frontWall;
+                break;
+        }
+
+    }
+
+    update() {
+        this.getLayerPositions();
+        this.positionerX = this.width / 2 + (Math.sin(this.counter) * (this.width / 2));
+        if (this.position === true) {
+            this.createObject();
+            this.position = false;
+        }
+        this.objects.map(object => {
+            let offset = Vector.subtract(this.initialStart, this.start).invert();
+            object.object.updateOffset(offset);
+            object.object.update();
+        });
+        this.draw();
+        this.counter += 0.02;
+    }
+
+    beginDebugLine() {
+        context.beginPath();
+        context.lineWidth = 1;
+        context.strokeStyle = 'rgba(255, 0, 0, 1)';
+        context.setLineDash([]);
+    }
+
+    endDebugLine() {
+        context.stroke();
+    }
+
+    drawTriangle() {
+        this.beginDebugLine();
+        context.moveTo(this.start.x, this.start.y);
+        context.lineTo(this.width / 2 + this.start.x, canvas.height - (this.height + (this.add / 2)));
+        context.lineTo(this.end.x, this.end.y);
+        this.endDebugLine()
+    }
+
+    drawObjects() {
+        this.beginDebugLine();
+        this.objects.map(object => {
+            context.moveTo(object.start.x, object.start.y);
+            context.lineTo(object.end.x, object.end.y);
+        });
+        this.endDebugLine();
+    }
+
+    drawPositioner() {
+        this.beginDebugLine();
+        context.moveTo(canvas.width / 2, this.start.y);
+        context.arc(this.positionerX + this.start.x, this.start.y, 5, 0, Math.PI * 2, false );
+        this.endDebugLine();
+    }
+
+    draw() {
+        if (this.debug) {
+            this.drawTriangle();
+            this.drawPositioner();
+            this.drawObjects();
+        }
+    }
+}
+
+// MainGate
+
+'use strict';
+
+class MainGate extends Tower {
+
+    constructor( base, scaleX, scaleY, width, height, color ) {
+
+        super();
+
+        this.elementsRight = [];
+        this.elementsPositionRight = [];
+
+        this.base = base;
+        this.color = color;
+        this.scaleX = scaleX;
+        this.scaleY = scaleY;
+        this.angle = 0;
+
+        let lowerElementHeight = height / 3;
+        let centerElementHeight = height / 3;
+        let topElementHeight = height / 3;
+
+        this.elementsPositionLeft = [
+            Vector.subtract(base, new Vector((width * scaleX) / 2, 0)),
+            Vector.subtract(base, new Vector((width * scaleX) / 2, lowerElementHeight * scaleY)),
+            Vector.subtract(base, new Vector(((width - 2) * scaleX) / 2, (lowerElementHeight + 2) * scaleY)),
+            Vector.subtract(base, new Vector(((width - 2) * scaleX) / 2, (lowerElementHeight + 2) * scaleY)),
+            Vector.subtract(base, new Vector(((width - 2) * scaleX) / 2, (lowerElementHeight + 1) * scaleY)),
+            Vector.subtract(base, new Vector(((width - 3) * scaleX) / 2, (lowerElementHeight + 2) * scaleY)),
+            Vector.subtract(base, new Vector(((width - 5) * scaleX) / 2, (lowerElementHeight + centerElementHeight + 4) * scaleY)),
+            Vector.subtract(base, new Vector(((width - 7) * scaleX) / 2, (lowerElementHeight + centerElementHeight + 4) * scaleY)),
+            Vector.subtract(base, new Vector(((width - 10) * scaleX) / 2, (lowerElementHeight + centerElementHeight + 4) * scaleY)),
+            Vector.subtract(base, new Vector(((width - 7) * scaleX) / 2, (centerElementHeight + lowerElementHeight + topElementHeight  + 6) * scaleY))
+        ];
+
+        this.elementsLeft = [
+            Pillar2.create( this.elementsPositionLeft[0], scaleX, scaleY, lowerElementHeight, 2, 2, color ),
+            Triangle.create( this.elementsPositionLeft[1], scaleX, scaleY, 2, 1, 0, 4, color ),
+            Triangle.create( this.elementsPositionLeft[2], scaleX, scaleY, 4, 2, 180, 5, color ),
+            Triangle.create( this.elementsPositionLeft[3], scaleX, scaleY, 4, 2, 0, 5, color ),
+            Triangle.create( this.elementsPositionLeft[4], scaleX, scaleY, 4, 2, 180, 5, color ),
+            Pillar2.create( this.elementsPositionLeft[5], scaleX, scaleY, centerElementHeight + 1, 2, 2, color ),
+            Triangle.create( this.elementsPositionLeft[6], scaleX, scaleY, 4, 2, -90, 5, color ),
+            Pillar2.create( this.elementsPositionLeft[7], scaleX, scaleY, 10, 2, 2, color ),
+            Pillar2.create( this.elementsPositionLeft[8], scaleX, scaleY, 3, 2, 2, color ),
+            Triangle.create( this.elementsPositionLeft[9], scaleX, scaleY, 4, 2, 180, 5, color ),
+        ];
+
+        this.elementsPositionCenter = [
+            Vector.subtract(base, new Vector(0, (lowerElementHeight + 1) * scaleY)),
+            Vector.subtract(base, new Vector(0, (lowerElementHeight + 1) * scaleY)),
+            Vector.subtract(base, new Vector(0, (lowerElementHeight + 4) * scaleY)),
+            Vector.subtract(base, new Vector(0, (centerElementHeight + lowerElementHeight + topElementHeight + 6) * scaleY)),
+            base
+        ];
+
+        this.elementsCenter = [
+            Pillar2.create( this.elementsPositionCenter[0], scaleX, scaleY, 3, 2, 2, color ),
+            Triangle.create( this.elementsPositionCenter[1], scaleX, scaleY, 4, 2, 180, 5, color ),
+            Trap.create( this.elementsPositionCenter[2], scaleX, scaleY, 0, centerElementHeight, 3, color, false ),
+            Triangle.create( this.elementsPositionCenter[3], scaleX, scaleY, 6, 3, 0, 5, color ),
+            Pillar2.create( this.elementsPositionCenter[4], scaleX, scaleY, lowerElementHeight + centerElementHeight, 1, 1, color )
+        ];
+
+        this.elementsLeft[0].start = true;
+
+        this.mirror();
+
+        this.ownElements = [
+            new Vector(0, (lowerElementHeight + 2) * -1),
+            new Vector(0, 0)
+        ];
+
+        this.initialize(
+            [
+                {
+                    to: [
+                        new Vector(0, 0),
+                        new Vector(8, 0),
+                        new Vector(8, 1),
+                        new Vector(0, 1)
+                    ],
+                    location: this.ownElements[0],
+                    center: Shape.CENTERCENTER,
+                    color: color,
+                },
+                {
+                    to: [
+                        new Vector(0, 0),
+                        new Vector(width+4, 0),
+                        new Vector(width+4, .5),
+                        new Vector(0, .5)
+                    ],
+                    location: this.ownElements[1],
+                    center: Shape.BOTTOMCENTER,
+                    color: color,
+                }
+            ],
+            scaleX,
+            scaleY,
+            base
+        );
+    }
+
+    setFill(fill) {
+        this.fill = fill;
+        this.shapes.map(shape => {
+            shape.setFill(fill);
+        });
+        this.elementsLeft.map(shape => {
+            shape.setFill(fill);
+        });
+        this.elementsRight.map(shape => {
+            shape.setFill(fill);
+        });
+        this.elementsCenter.map(shape => {
+            shape.setFill(fill);
+        });
+    }
+
+    mirror() {
+        this.elementsLeft.map((element, index) => {
+            this.elementsPositionRight[index] = new Vector(
+                Vector.add(
+                    this.base,
+                    Vector.subtract(
+                        this.base,
+                        this.elementsPositionLeft[index]
+                    )
+                ).x,
+                this.elementsPositionLeft[index].y
+            );
+            switch (element.constructor.name) {
+                case 'Pillar2':
+                    this.elementsRight[index] = Pillar2.create(
+                        this.elementsPositionRight[index],
+                        element.getScaleX(),
+                        element.getScaleY(),
+                        element.getHeight(),
+                        2, 2,
+                        this.color
+                    );
+                    break;
+                case 'Triangle':
+                    this.elementsRight[index] = Triangle.create(
+                        this.elementsPositionRight[index],
+                        element.getScaleX(),
+                        element.getScaleY(),
+                        element.getWidth(),
+                        element.getHeight(),
+                        element.getAngle() * -1,
+                        element.getCornerRoundness(),
+                        this.color
+                    );
+                    break;
+            }
+            this.elementsRight[index].start = element.start;
+        });
+    }
+
+    update() {
+
+        this.elementsLeft.map((element, index) => {
+            element.updateOffset(this.offset);
+            element.update(() => {
+                switch (index) {
+                    case 0:
+                        this.elementsLeft[1].start = true;
+                        break;
+                    case 1:
+                        this.elementsLeft[2].start = true;
+                        break;
+                    case 2:
+                        this.elementsLeft[3].start = true;
+                        this.elementsLeft[4].start = true;
+                        break;
+                    case 3:
+                        this.elementsLeft[5].start = true;
+                        break;
+                    case 5:
+                        this.elementsLeft[6].start = true;
+                        break;
+                    case 6:
+                        this.elementsLeft[7].start = true;
+                        this.elementsLeft[8].start = true;
+                        break;
+                    case 7:
+                        this.elementsLeft[9].start = true;
+                        break;
+
+                }
+            });
+        });
+        this.elementsRight.map((element, index) => {
+            element.updateOffset(this.offset);
+            element.update(() => {
+                switch (index) {
+                    case 0:
+                        this.elementsRight[1].start = true;
+                        break;
+                    case 1:
+                        this.elementsRight[2].start = true;
+                        break;
+                    case 2:
+                        this.elementsRight[3].start = true;
+                        this.elementsRight[4].start = true;
+                        break;
+                    case 3:
+                        this.elementsRight[5].start = true;
+                        this.start = true;
+                        break;
+                    case 5:
+                        this.elementsRight[6].start = true;
+
+                        this.elementsCenter[0].start = true;
+                        this.elementsCenter[1].start = true;
+                        break;
+                    case 6:
+                        this.elementsRight[7].start = true;
+                        this.elementsRight[8].start = true;
+                        this.elementsCenter[2].start = true;
+                        break;
+                    case 7:
+                        this.elementsRight[9].start = true;
+                        this.elementsCenter[3].start = true;
+                        this.elementsCenter[4].start = true;
+                        break;
+
+                }
+            });
+        });
+        this.elementsCenter.map((element, index) => {
+            element.updateOffset(this.offset);
+            element.update();
+        });
+
+        //this.updateOffset(this.offset);
+        super.update();
+    }
+
+    static create(
+        base,
+        scaleX = 10,
+        scaleY = 10,
+        width = 12,
+        height = 24,
+        color = 'rgba(0, 0, 0, 1)'
+    ) {
+        return new MainGate(base, scaleX, scaleY, width, height, color);
+    }
+}
+
+// App
+
+'use strict';
+
+function Stage() {
+
+    let horizon = 250;
+    let debug = false;
+
+    let clear = new Clear();
+    let sky = new Sky(canvas.width / 2, 100);
+    let ground = new Ground(horizon);
+
+    let layers = new Layers(
+        new Vector(0, canvas.height - horizon),
+        new Vector(canvas.width, canvas.height - horizon),
+        debug
+    );
+
+    let color = 40 / 5;
+    let colors = [];
+    for (let i = 1 ; i <= 5 ; i++) {
+        colors[i] = (color * i);
+        colors[i] = 'rgba('+(colors[i] + 10)+','+(colors[i])+','+(colors[i] + 20)+',1)';
+    }
+
+    let pattern = new Pattern(
+        new Vector(
+            canvas.width / 2,
+            canvas.height - horizon
+        ),
+        300,
+        300
+    );
+
+    let layer0 = new Layer( layers, 0, colors[4], [ 'Spike' ], pattern, debug );
+    let layer7 = new Layer( layers, 7, colors[3], [ 'Spike', 'Roof1' ], pattern, debug );
+    let layer9 = new Layer(layers, 9, colors[2], [ 'Spike', 'Roof1', 'Spike', 'Roof2', 'Spike', 'Pillar' ], pattern, debug);
+    let layer10 = new Layer(layers, 10, colors[1], [ 'Spike', 'Roof2', 'Spike', 'Pillar2', 'Spike', 'Pillar3', 'Spike', 'ProminentTower', 'FrontWall' ], pattern, debug);
+    let layer11 = new Layer(layers, 11, 'rgb(0, 0, 0)', [ 'Spike', 'MainGate' ], pattern, debug);
+
+    let animate = function() {
+        clear.update();
+        sky.update();
+        ground.update();
+        layers.update();
+        layer0.update();
+        layer7.update();
+        layer9.update();
+        layer10.update();
+        layer11.update();
+
+        requestAnimationFrame(animate);
+    }.bind(this);
+
+    animate();
+}
+
+new Stage();

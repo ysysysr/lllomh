@@ -1558,27 +1558,11 @@ header.title .share{float: right;font-size: 14px;height: 24px;line-height: 22px;
 @media print{}
 
 
-.clock{
-  position: relative;
-  width: 537px;
-  height: 537px;
+canvas {
   margin: 0 auto;
-  background:url('http://liyajieblog.oss-cn-qingdao.aliyuncs.com/liyajieblog/imgs/clock/clock.jpg') no-repeat;
-  background-size: 100% 100%
-}
-.clock div{
-  position: absolute;
-  width: 537px;
-  height: 537px;
-}
-.clock .hour{
-  background: url('http://liyajieblog.oss-cn-qingdao.aliyuncs.com/liyajieblog/imgs/clock/hour.png') center no-repeat;
-}
-.clock .minute{
-  background: url('http://liyajieblog.oss-cn-qingdao.aliyuncs.com/liyajieblog/imgs/clock/minute.png') center no-repeat;
-}
-.clock .second{
-  background: url('http://liyajieblog.oss-cn-qingdao.aliyuncs.com/liyajieblog/imgs/clock/second.png') center no-repeat;
+  display: block;
+  background-color: #000000;
+  width: 296px;
 }
 
-.bodr_none{border-right: none;}
+.bodr_none{}
