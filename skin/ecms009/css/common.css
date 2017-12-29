@@ -1319,7 +1319,7 @@ filter:alpha(opacity=90);} */
 
 .pagebar{position: fixed;top: 206px;z-index: 9999999;font-size: 32px;letter-spacing: -29px;color: #eaeaea;display: ;padding: 20px 40px 20px 0;border-radius: 2px;width: 46px;overflow: hidden;}
 .pagebar span{position: relative;z-index: 2;color: #fff;}
-.pagebar:hover{background-color: rgba(255, 71, 0, 0.38);color: #fff;}
+.pagebar:hover{background-color: rgb(218, 218, 218);color: #fff;}
 .pagebar:hover span{color: #ddd;}
 .pagebar-next{margin-left: 30px;}
 
