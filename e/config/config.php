@@ -7,22 +7,6 @@ define('EmpireCMSConfig',TRUE);
 $ecms_config=array();
 
 
-/*数据库设置*/
-$ecms_config['db']['usedb']='mysql';	//数据库类型
-$ecms_config['db']['dbver']='5.1.48';	//数据库版本
-$ecms_config['db']['dbserver']='qdm158906142.my3w.com';	//数据库登录地址
-$ecms_config['db']['dbport']='3306';	//端口，不填为按默认
-$ecms_config['db']['dbusername']='qdm158906142';	//数据库用户名
-$ecms_config['db']['dbpassword']='ab134678';	//数据库密码
-$ecms_config['db']['dbname']='qdm158906142_db';	//数据库名
-$ecms_config['db']['setchar']='utf8';	//设置默认编码
-$ecms_config['db']['dbchar']='utf8';	//数据库默认编码
-$ecms_config['db']['dbtbpre']='phome_';	//数据表前缀
-$dbtbpre=$ecms_config['db']['dbtbpre'];	//数据表前缀
-$ecms_config['db']['showerror']=1;	//显示SQL错误提示(0为不显示,1为显示)
-
-
-
 
 //数据库设置
 // $ecms_config['db']['usedb']='mysql';	//数据库类型
@@ -37,7 +21,6 @@ $ecms_config['db']['showerror']=1;	//显示SQL错误提示(0为不显示,1为显
 // $ecms_config['db']['dbtbpre']='phome_';	//数据表前缀
 // $dbtbpre=$ecms_config['db']['dbtbpre'];	//数据表前缀
 // $ecms_config['db']['showerror']=1;	//显示SQL错误提示(0为不显示,1为显示)
-
 
 
 
